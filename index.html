@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LCT KAJAL</title>
+
+  <!-- Tailwind & DaisyUI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Lato", "sans-serif"], // Lato as default
+          },
+          colors: {
+            primary: "#00bcd4",
+            secondary: "#0f1c4e",
+            "accent-light": "#e0f7fa",
+          },
+          backgroundImage: {
+            "hero-water":
+              "linear-gradient(to bottom, #00bcd480, #1ed8d380), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80')",
+          },
+        },
+      },
+      plugins: [daisyui],
+    };
+  </script>
+
+  <!-- Google Font: Lato 700 & 900 -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap" rel="stylesheet" />
+
+  <!-- DaisyUI + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <style>
+    
+    /*clickable with a popup lightbox view */
+      @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    span:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .fade-word {
+      transition: opacity 0.5s ease-in-out;
+    }
+
+
+
+    /* Smooth infinite horizontal scroll */
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-scroll {
+      display: flex;
+      width: max-content;
+      animation: scroll 20s linear infinite;
+      /* You can adjust the speed — e.g., 10s faster or 30s slower */
+    }
+
+    /* 🟡 Pause animation when hovered over the container */
+    .animate-scroll:hover {
+      animation-play-state: paused;
+    }
+
+    /* ✅ Fix for Navbar Overlap on All Devices (Next Hub, Hub Max, etc.) */
+    header {
+      padding-top: 70px;
+      /* adjust if your navbar is taller */
+    }
+
+    /* For larger smart displays like Nest Hub Max */
+    @media (min-width: 924px) {
+      header {
+        padding-top: 50px;
+      }
+    }
+
+    /* For smaller smart displays / tablets */
+    @media (max-width: 668px) {
+      header {
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans font-[45px] text-gray-800 bg-white">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full bg-white text-black shadow z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between md:justify-center gap-4 px-6 py-2">
+
+      <!-- Left Section (Logo + Title) -->
+      <div class="flex items-center gap-4">
+        <img src="images/logo.jpg.webp" alt="Logo" class="h-16 w-16 rounded-md object-cover" />
+        <h1
+          class="font-sans tracking-wide font-bold text-[20px] md:text-[20px] sm:text-[20px] leading-none md:text-left">
+          <a href="https://sonargaontourism.com/">
+            <span class="text-black block md:inline">SONARGOAN</span>
+            <span class="text-black block md:inline">TOURISM</span>
+          </a>
+        </h1>
+      </div>
+
+      <!-- Hamburger (Visible on Mobile) -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-4 font-bold">
+        <a href="https://sonargaontourism.com/ships/" class="hover:text-primary ml-8"><span>Ships</span></a>
+        <a href="https://sonargaontourism.com/contact/" class="hover:text-primary ml-4"><span>Contact</span></a>
+        <a href="https://sonargaontourism.com/faq/" class="hover:text-primary ml-4"><span>FAQ</span></a>
+
+        <a href="https://sonargaontourism.com/shop/">
+          <button
+            class="px-6 py-2 ml-8 rounded-3xl font-bold text-white bg-[#381d92] relative overflow-hidden hover:bg-gray-800 transition-all duration-300 sm:text-nowrap">
+            <span class="absolute inset-0 bg-gradient-to-r opacity-75 blur-lg animate-pulse"></span>
+            <span class="relative">Reserve Now</span>
+          </button>
+        </a>
+
+        <img class="h-[40px] w-[60px]" src="/images/card buy.svg" alt="Cart" />
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden flex-col items-center bg-white shadow-md py-4 space-y-3 font-semibold">
+    <a href="ips#shhttps://sonargaontourism.com/ships/" class="hover:text-primary">Ships</a>
+    <a href="https://sonargaontourism.com/contact/" class="hover:text-primary">Contact</a>
+    <a href="https://sonargaontourism.com/faq/" class="hover:text-primary">FAQ</a>
+    <a href="https://sonargaontourism.com/shop/">
+      <button
+        class="px-6 py-2 rounded-3xl font-bold text-white bg-[#381d92] relative overflow-hidden hover:text-[#381d92] transition-all duration-300">
+        <span
+          class="absolute inset-0 bg-gradient-to-r from-[#381d92] via-indigo-500 to-blue-500 opacity-75 blur-lg animate-pulse"></span>
+        <span class="relative">Reserve Now</span>
+      </button>
+    </a>
+    <a href="https://sonargaontourism.com/"><img class="h-[40px] w-[60px]" src="/images/card buy.svg" alt="Cart" /></a>
+  </div>
+
+  <!-- Mobile Slide Sidebar -->
+  <div id="sidebar"
+    class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-40">
+    <div class="flex justify-between items-center p-4 border-b">
+      <h2 class="text-xl font-bold text-primary">Menu</h2>
+      <button id="close-btn" class="focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col space-y-4 font-semibold text-lg mt-4 pl-6">
+      <a href="#ships" class="hover:text-primary">Ships</a>
+      <a href="#hotels" class="hover:text-primary">Hotels</a>
+      <a href="#restaurants" class="hover:text-primary">Restaurants</a>
+      <a href="https://sonargaontourism.com/shop/">
+        <button
+          class="px-6 py-2 rounded-3xl font-bold text-white bg-[#381d92] relative overflow-hidden hover:text-[#381d92] transition-all duration-300">
+          <span
+            class="absolute inset-0 bg-gradient-to-r from-[#381d92] via-indigo-500 to-blue-500 opacity-75 blur-lg animate-pulse"></span>
+          <span class="relative">Reserve Now</span>
+        </button>
+      </a>
+      <img class="h-[40px] w-[60px] mt-3" src="/images/card buy.svg" alt="Cart" />
+    </div>
+  </div>
+
+  <!-- Overlay (click to close sidebar) -->
+  <div id="overlay"
+    class="fixed inset-0 bg-black bg-opacity-40 hidden z-30 transition-opacity duration-300 ease-in-out"></div>
+
+
+  <header class="relative text-white rounded-md overflow-hidden">
+  <!-- Hero Section -->
+  <div
+    id="hero-container"
+    class="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[80vh] overflow-hidden"
+  >
+    <!-- Background slides wrapper -->
+    <div
+      id="hero-slider"
+      class="absolute inset-0 flex transition-transform duration-[1500ms] ease-in-out"
+    >
+      <div
+        class="flex-shrink-0 w-full bg-cover bg-center"
+        style="background-image: url('/images/tangura\ haor\ sundarban.jpg');"
+      ></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/30"></div>
+
+    <!-- Main Headline -->
+    <div
+      class="absolute top-[50px] left-0 right-0 flex justify-center items-start pt-10 min-h-[200px] w-full"
+    >
+      <h1
+        class="flex flex-row items-baseline gap-4 text-left font-sans font-normal tracking-wide leading-tight drop-shadow-lg text-[clamp(1.25rem,5vw,3rem)]"
+      >
+        <span class="opacity-80">Travel In Our</span>
+        <span
+          id="dynamic-word"
+          class="inline-block text-white opacity-90 underline decoration-4 decoration-slate-100 transition-all duration-500"
+          >Ships</span
+        >
+      </h1>
+    </div>
+
+    <!-- Sub Branding Section -->
+    <div
+      class="relative z-10 mt-32 sm:mt-15 justify-center px-4 sm:px-6 md:px-20 py-4 rounded-xl w-[90%] sm:w-[80%] md:w-[60%] lg:w-auto lg:mr-[550px] max-w-lg md:max-w-2xl lg:max-w-4xl"
+    >
+      <h1
+        class="text-4xl sm:text-4xl md:text-6xl lg:text-8xl font-extrabold text-white drop-shadow-2xl text-center"
+      >
+        <span class="block">MV</span>
+        <span class="block mt-2">TANGOUR</span>
+        <span class="block mt-2">HOUR</span>
+      </h1>
+
+      <div class="relative z-10 w-full flex justify-end pr-20 md:pr-24 mt-6">
+        <div class="bg-black/40 backdrop-blur-md rounded-xl p-8 max-w-md shadow-lg">
+          <p
+            class="text-sm sm:text-base md:text-lg lg:text-2xl font-bold text-right text-emerald-400"
+          >
+            শিপ ব্যবস্থাপক
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 font-extrabold drop-shadow-lg hover:scale-105 transition-transform duration-300"
+              >সোনারগাঁ টুরিজম</span
+            >
+          </p>
+
+          <p
+            class="text-[10px] sm:text-xs md:text-sm lg:text-2xl font-semibold text-right text-emerald-400 mt-2"
+          >
+            Ship Management by
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 font-extrabold drop-shadow-lg hover:scale-105 transition-transform duration-300"
+              >Sonargaon Tourism</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  </header>
+
+
+  <section class="bg-white py-3 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-6 px-4 sm:px-6 lg:px-8">
+
+      <!-- 🟦 Fixed Title (Now stays on one line across devices) -->
+      <div
+        class="font-sans mt-4 font-semibold text-[18px] sm:text-[20px] md:text-[22px] text-blue-700 flex-shrink-0 w-full md:w-60 text-center md:text-left whitespace-nowrap">
+        Our Business Associates
+      </div>
+
+      <!-- 🟨 Scrolling Logos -->
+      <div class="scroll-container relative overflow-hidden flex-1 w-full">
+        <div class="animate-scroll flex items-center gap-6 sm:gap-8 md:gap-10 whitespace-nowrap">
+
+          <!-- 🌀 First Logo Set -->
+          <div class="flex items-center gap-6 sm:gap-8 md:gap-10 opacity-70">
+
+            <!-- Logo 1 -->
+            <div
+              class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[120px] sm:min-w-[160px]">
+              <img src="images/1.png" alt="Bangladesh Parjatan Corporation"
+                class="h-10 sm:h-12 md:h-14 object-contain" />
+              <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                Bangladesh <br />Parjatan <br />Corporation
+              </p>
+            </div>
+
+            <!-- Logo 2 -->
+            <div
+              class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+              <img src="images/2.png" alt="BIWTA" class="h-10 sm:h-12 md:h-14 object-contain" />
+              <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                Bangladesh Inland <br />Water Transport <br />Authority (BIWTA)
+              </p>
+            </div>
+
+            <!-- Logo 3 -->
+            <div
+              class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+              <img src="images/3.png" alt="BIWTC" class="h-10 sm:h-12 md:h-14 object-contain" />
+              <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                Bangladesh Inland <br />Water Transport <br />Corporation (BIWTC)
+              </p>
+            </div>
+
+            <!-- Logo 4 -->
+            <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+              <img src="/images/5.png" alt="Bangladesh Tourism Board"
+                class="h-12 sm:h-14 md:h-16 w-auto object-contain" />
+            </div>
+
+            <!-- Logo 5 -->
+            <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+              <img src="/Cabin/logo-2.png.webp" alt="Department of Shipping Bangladesh"
+                class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+              <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                Department <br /> of Shipping <br /> Bangladesh
+              </p>
+            </div>
+
+            <!-- Logo 7 -->
+            <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+              <img src="/images/7.jpg" alt="TOAB" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+              <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                Tour Operator <br /> Association Bangladesh
+              </p>
+            </div>
+
+
+            <!-- 🔁 Duplicate Logos for Infinite Scroll -->
+            <div class="flex items-center gap-6 sm:gap-8 md:gap-10">
+
+              <!-- Logo 1 -->
+              <div
+                class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[120px] sm:min-w-[160px]">
+                <img src="images/1.png" alt="Bangladesh Parjatan Corporation"
+                  class="h-10 sm:h-12 md:h-14 object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                  Bangladesh <br />Parjatan <br />Corporation
+                </p>
+              </div>
+
+              <!-- Logo 2 -->
+              <div
+                class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+                <img src="images/2.png" alt="BIWTA" class="h-10 sm:h-12 md:h-14 object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                  Bangladesh Inland <br />Water Transport <br />Authority (BIWTA)
+                </p>
+              </div>
+
+              <!-- Logo 3 -->
+              <div
+                class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+                <img src="images/3.png" alt="BIWTC" class="h-10 sm:h-12 md:h-14 object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                  Bangladesh Inland <br />Water Transport <br />Corporation (BIWTC)
+                </p>
+              </div>
+
+              <!-- Logo 4 -->
+              <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+                <img src="/images/5.png" alt="Bangladesh Tourism Board"
+                  class="h-12 sm:h-14 md:h-16 w-auto object-contain" />
+              </div>
+
+              <!-- Logo 5 -->
+              <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+                <img src="/Cabin/logo-2.png.webp" alt="Department of Shipping Bangladesh"
+                  class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                  Department <br /> of Shipping <br /> Bangladesh
+                </p>
+              </div>
+
+
+              <!-- Logo 7 -->
+              <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+                <img src="/images/5.png" alt="TOAB" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                  Tour Operator <br /> Association Bangladesh
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+
+
+  <section>
+    <div class="max-w-7xl mx-auto py-12 px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <!-- 🟩 Left Column (Hot Deals) -->
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-black text-gray-800 mb-6">Hot Deals</h2>
+          <div class="flex flex-wrap justify-start gap-8">
+
+            <!-- 🔹 MV Tangura Haor - Second Floor -->
+            <div class="w-full sm:w-80 border rounded-xl shadow-lg bg-white relative">
+              <span
+                class="absolute top-0 right-0 mt-4 mr-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">SALE</span>
+              <a href="https://sonargaontourism.com/product/mv-tangura-haor-cruise/">
+                <figure class="px-4 pt-4">
+                  <img src="/images/MV tangura (1).png" alt="MV Tangura Haor Cruise"
+                    class="rounded-xl w-full h-40 object-cover" />
+                </figure>
+              </a>
+              <div class="card-body px-4 pb-4 items-center text-center">
+                <a href="https://sonargaontourism.com/product/mv-tangura-haor-cruise/">
+                  <p class="text-gray-700 text-sm leading-snug font-bold">
+                    MV Tangura Haor Ship (Dhaka–Sundarban–Dhaka) — Second Floor (Luxury AC Cruise)
+                  </p>
+                  <p class="text-gray-500 line-through mt-2 text-sm">21,400.00৳</p>
+                  <p class="text-primary text-lg font-bold mt-1">20,000.00 ৳</p>
+                </a>
+                <div class="card-actions mt-4">
+                  <a href="https://sonargaontourism.com/product/mv-tangura-haor-cruise/">
+                    <button
+                      class="bg-purple-800 text-white px-6 py-2 rounded-lg hover:bg-purple-700 font-semibold text-sm">
+                      Select options
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 🔹 MV Tangura Haor - First Floor -->
+            <div class="w-full sm:w-80 border rounded-xl shadow-lg bg-white relative">
+              <span
+                class="absolute top-0 right-0 mt-4 mr-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">SALE</span>
+              <a href="https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/">
+                <figure class="px-4 pt-4">
+                  <img src="/images/MV tangura (4).png" alt="MV Tangura Haor Cruise"
+                    class="rounded-xl w-full h-40 object-cover" />
+                </figure>
+              </a>
+              <div class="card-body px-4 pb-4 items-center text-center">
+                <a href="https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/">
+                  <p class="text-gray-700 text-sm leading-snug font-bold">
+                    MV Tangura Haor Ship (Dhaka–Sundarban–Dhaka) — First Floor (Luxury AC Cruise)
+                  </p>
+                  <p class="text-gray-500 line-through mt-2 text-sm">19,500.00৳</p>
+                  <p class="text-primary text-lg font-bold mt-1">18,000.00 ৳</p>
+                </a>
+                <div class="card-actions mt-4">
+                  <a href="https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/">
+                    <button
+                      class="bg-purple-800 text-white px-6 py-2 rounded-lg hover:bg-purple-700 font-semibold text-sm">
+                      Select options
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 🟪 Right Column (Booking Process + History) -->
+        <div class="lg:col-span-1 mr-6">
+          <h2 class="text-3xl font-black text-gray-800 mb-6">Booking Process</h2>
+
+          <!-- Booking Steps -->
+          <div class="flex items-center justify-center space-x-2 sm:space-x-4 mb-8">
+            <div class="flex flex-col items-center">
+              <div class="bg-blue-800 text-white rounded-full p-3 text-2xl">
+                <i class="fas fa-list-check"></i>
+              </div>
+              <p class="text-lg font-black text-gray-800 mt-2">1</p>
+              <p class="text-sm font-bold text-center text-gray-700 leading-none">Choose</p>
+              <p class="text-xs text-center text-gray-600 leading-none">Package/Hotel/Bus</p>
+            </div>
+
+            <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+
+            <div class="flex flex-col items-center">
+              <div class="bg-blue-800 text-white rounded-full p-3 text-2xl">
+                <i class="fas fa-comment-dots"></i>
+              </div>
+              <p class="text-lg font-black text-gray-800 mt-2">2</p>
+              <p class="text-sm font-bold text-center text-gray-700 leading-none">Order or</p>
+              <p class="text-xs text-center text-gray-600 leading-none">Chat/Call Us</p>
+            </div>
+
+            <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+
+            <div class="flex flex-col items-center">
+              <div class="bg-blue-800 text-white rounded-full p-3 text-2xl">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <p class="text-lg font-black text-gray-800 mt-2">3</p>
+              <p class="text-sm font-bold text-center text-gray-700 leading-none">Pay Online</p>
+              <p class="text-xs text-center text-gray-600 leading-none">Bkash/Card/Bank</p>
+            </div>
+          </div>
+
+          <!-- ✅ Hover to View Full Image -->
+        <div class="mt-10 relative group">
+          <h3 class="text-xl font-black text-purple-700 mb-4 text-center">
+            History of MV Tangura Haor
+          </h3>
+
+          <!-- Small Image -->
+          <div class="w-full rounded-lg overflow-hidden shadow-md">
+            <img
+              src="/Cabin/history.png"
+              alt="MV Tangura Haor History"
+              class="w-full h-48 object-cover cursor-zoom-in"
+            />
+          </div>
+
+          <!-- 🪄 Hidden Full Preview on Hover -->
+          <div
+            class="absolute inset-0 hidden group-hover:flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          >
+            <img
+              src="/Cabin/history.png"
+              alt="MV Tangura Haor History Large"
+              class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl border-4 border-white"
+            />
+          </div>
+
+        
+
+        </div>
+        <!-- Text -->
+          <div class="text-center mt-4">
+            <h2 class="text-base font-semibold text-gray-900">
+            Ship Owner & Operated by Tiger Tours LTD, Sonargaon Tourism & M4RD
+            </h2>
+
+            <!-- ✅ Partner Logos -->
+            <div class="flex justify-center items-center gap-6 mt-3">
+              <img
+                src="/Cabin/tiger tour.jpg"
+                alt="Tiger Tours LTD"
+                class="w-20 h-20 object-contain rounded-md shadow-md"
+              />
+              <img
+                src="/images/logo.jpg.webp"
+                alt="M4RD"
+                class="w-20 h-20 object-contain rounded-md shadow-md"
+              />
+              <img
+                src="/Cabin/sonargaon_tourism.png"
+                alt="Sonargaon Tourism"
+                class="w-20 h-20 object-contain rounded-md shadow-md"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- 🌅 MV Tangua Haor & Sundarban Attractions Gallery -->
+<section class="bg-gradient-to-b from-blue-50 to-white py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- 🟦 Section Title -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-blue-800 mb-3">
+        Discover the Charm of Tangua Haor & Sundarban
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-base">
+        A visual journey through the serene waters, luxury experiences, and breathtaking nature of the Haor and Sundarban — where MV Tangura Haor brings adventure and peace together.
+      </p>
+    </div>
+
+    <!-- 🌊 Section 1: MV Tangura Haor -->
+
+        <h3 class="text-2xl font-bold text-purple-700 mb-6 text-center">MV Tangura Haor Cruise</h3>
+    <div class="relative w-full max-w-7xl mx-auto">
+  <!-- Left Arrow -->
+  <button id="prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10">‹</button>
+
+  <!-- Scrollable container -->
+  <div id="slider" class="flex overflow-x-auto scrollbar-hide space-x-6 scroll-smooth py-6">
+    <!-- Cards -->
+    <div class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden">
+      <img src="/Cabin/hero3.png" alt="Deck View" class="w-full h-52 object-cover" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">Deck View</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden">
+      <img src="/Cabin/mvth66.jpg" alt="Luxury Lounge" class="w-full h-52 object-cover" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">Luxury Lounge</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden">
+      <img src="/Cabin/1.png" alt="Cabin Interior" class="w-full h-52 object-cover" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">Cabin Interior</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden">
+      <img src="images/unnamed.jpg" alt="Cabin Interior" class="w-full h-52 object-cover" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">Cabin Interior</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden">
+      <img src="images/unnamed (2).jpg" alt="Cabin Interior" class="w-full h-52 object-cover" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">Cabin Interior</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden">
+      <img src="/Cabin/2.png" alt="Luxury Bed Room" class="w-full h-52 object-cover" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">Luxury Bed Room</div>
+    </div>
+  </div>
+
+  <!-- Right Arrow -->
+  <button id="next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10">›</button>
+</div>
+
+    <!-- 🌴 Section 2: Nature & Haor Views -->
+    <h3 class="text-2xl font-bold text-emerald-700 mb-6 text-center">Haor & Nature Views</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
+      <div class="relative group overflow-hidden rounded-xl shadow-md">
+        <img src="/images/68.jpg" alt="Haor Sunset"
+          class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500" />
+      </div>
+      <div class="relative group overflow-hidden rounded-xl shadow-md">
+        <img src="/images/998.jpg" alt="Haor Sunset"
+          class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500" />
+      </div>
+      <div class="relative group overflow-hidden rounded-xl shadow-md">
+        <img src="/images/996.jpg" alt="Haor Sunset"
+          class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500" />
+      </div>
+      <div class="relative group overflow-hidden rounded-xl shadow-md">
+        <img src="/images/7.jpg" alt="Haor Sunset"
+          class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500" />
+      </div>
+      <div class="relative group overflow-hidden rounded-xl shadow-md">
+        <img src="/images/8.jpg" alt="Haor Sunset"
+          class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500" />
+      </div>
+    </div>
+
+    <!-- 🐅 Section 3: Sundarban Experience -->
+    <h3 class="text-2xl font-bold text-amber-700 mb-6 text-center">Sundarban Adventure</h3>
+    <div class="relative w-full max-w-7xl mx-auto">
+  <!-- Left Arrow -->
+  <button id="prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10">‹</button>
+
+  <!-- Horizontal scroll container -->
+  <div id="slider" class="flex overflow-x-auto scrollbar-hide space-x-6 scroll-smooth py-6">
+    <!-- Cards -->
+    <div class="relative flex-shrink-0 w-72 group overflow-hidden rounded-xl shadow-lg">
+      <img src="/images/56.jpeg" alt="Sundarban River"
+        class="w-full h-52 object-cover transform group-hover:scale-110 transition duration-500" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">লাকমা ছড়া</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 group overflow-hidden rounded-xl shadow-md">
+      <img src="/images/59.jpg" alt="Haor Morning"
+        class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">জাদুকাটা নদী</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 group overflow-hidden rounded-xl shadow-md">
+      <img src="/images/57.jpg" alt="Haor Evening"
+        class="w-full h-48 object-cover transform group-hover:scale-110 transition duration-500" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">ওয়াচ টাওয়ার</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 group overflow-hidden rounded-xl shadow-lg">
+      <img src="/images/58.jpg" alt="Mangrove Forest"
+        class="w-full h-52 object-cover transform group-hover:scale-110 transition duration-500" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">নীলাদ্রি লেক</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 group overflow-hidden rounded-xl shadow-lg">
+      <img src="/images/60.jpg" alt="Sundarban Wildlife"
+        class="w-full h-52 object-cover transform group-hover:scale-110 transition duration-500" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">শিমুল বাগান</div>
+    </div>
+
+    <div class="relative flex-shrink-0 w-72 group overflow-hidden rounded-xl shadow-lg">
+      <img src="/images/61.jpg" alt="Sundarban Cruise View"
+        class="w-full h-52 object-cover transform group-hover:scale-110 transition duration-500" />
+      <div class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm">বারিক্কা টিলা</div>
+    </div>
+  </div>
+
+  <!-- Right Arrow -->
+  <button id="next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10">›</button>
+</div>
+
+    <!-- 📜 Section Footer -->
+    <div class="text-center mt-12">
+      <p class="text-gray-600 italic">
+        *All images captured from MV Tangura Haor journeys. Actual experience may vary with season and weather conditions.*
+      </p>
+      <button class="mt-4 px-6 py-2 bg-blue-700 text-white rounded-full shadow hover:bg-blue-800 transition">
+        Book Your Adventure
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- 🌅 Featured Sundarban Package Highlight with Lightbox -->
+<section class="relative bg-gradient-to-b from-white to-blue-50 py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-extrabold text-amber-700 text-center mb-8">
+      Experience of the Sundarban
+    </h2>
+
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer" onclick="openLightbox()">
+      <!-- Main Image -->
+      <img
+        src="/images/Sundarban package-03.jpg"
+        alt="Sundarban Cruise Adventure"
+        class="w-full h-[500px] object-cover transform group-hover:scale-110 transition duration-700"
+      />
+
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-90"></div>
+
+      <!-- Text Content -->
+      <div class="absolute bottom-0 left-0 w-full p-8 text-white">
+        <h3 class="text-3xl font-bold mb-2 drop-shadow-lg">Sundarban Explorer Cruise</h3>
+        <p class="text-base max-w-2xl mb-4 leading-relaxed opacity-90">
+          Embark on a 3-day luxury journey through the world’s largest mangrove forest. Enjoy guided wildlife tours, onboard dining, and stunning river sunsets aboard the MV Tangua Haor.
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm">3 Days / 2 Nights</span>
+          <span class="bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm">All-Inclusive Meals</span>
+          <span class="bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm">Forest Permit Included</span>
+        </div>
+
+        <button
+          class="mt-6 px-6 py-2 bg-amber-600 hover:bg-amber-700 rounded-full shadow-lg transition duration-300"
+        >
+          Book This Package
+        </button>
+      </div>
+
+      <!-- Decorative Border Glow -->
+      <div class="absolute inset-0 border-4 border-transparent group-hover:border-amber-400 rounded-3xl transition duration-500"></div>
+    </div>
+  </div>
+
+  <!-- 🌌 Lightbox Modal -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 bg-black/90 hidden justify-center items-center z-50"
+    onclick="closeLightbox()"
+  >
+    <img
+      src="/images/Sundarban package-03.jpg"
+      alt="Sundarban Full View"
+      class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl animate-fadeIn"
+    />
+    <button
+      class="absolute top-6 right-8 text-white text-3xl font-bold hover:text-amber-400"
+      onclick="closeLightbox()"
+    >
+      &times;
+    </button>
+  </div>
+</section>
+
+
+
+  <!-- Travel Pass and Tickets -->
+  <section>
+    <div class="bg-white py-8">
+
+      <!-- Section Title (Left-aligned) -->
+      <div class="px-4 sm:px-6 md:px-8">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl text-[#2E3192] font-sans font-bold mt-8 mb-8 text-left">
+          Travel Pass and Tickets
+        </h1>
+      </div>
+
+      <!-- Image Container (Centered) -->
+      <div class="flex justify-center px-4 sm:px-6 md:px-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-full md:max-w-3xl">
+          <img src="/Cabin/travel pass.png" alt="Travel Pass" class="w-full h-auto object-contain" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Language Buttons & Messages -->
+    <div class="max-w-md mx-auto mt-10 rounded-xl overflow-hidden shadow-2xl bg-white">
+
+      <!-- Language Buttons -->
+      <div class="p-4 bg-gray-100 flex justify-center space-x-4 border-b border-gray-200 flex-wrap">
+        <button onclick="showLanguage('en')" id="btn-en"
+          class="px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 bg-[#2E3192] text-white hover:bg-blue-800">
+          English
+        </button>
+        <button onclick="showLanguage('bn')" id="btn-bn"
+          class="px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-700 bg-white border border-gray-300 hover:bg-gray-50">
+          বাংলা
+        </button>
+      </div>
+
+      <!-- English Message -->
+      <div id="content-en" class="language-content text-center p-6 sm:p-8">
+        <h2 class="text-2xl font-bold text-[#2E3192] mb-3">🎫 Travel Pass Confirmed!</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Your <strong class="text-[#2E3192]">Travel Pass</strong> will be sent via
+          <strong class="text-green-600">Email/WhatsApp</strong>.
+          Please <span class="font-semibold text-red-600">do not share</span> it and
+          <span class="font-semibold text-gray-800">bring a printed copy</span> for boarding.
+        </p>
+        <p class="mt-4 text-sm italic text-gray-500">Have a safe and pleasant journey!</p>
+      </div>
+
+      <!-- Bangla Message -->
+      <div id="content-bn" class="language-content hidden text-center p-6 sm:p-8">
+        <h2 class="text-2xl font-bold text-[#2E3192] mb-3">🎫 ট্রাভেল পাস নিশ্চিত!</h2>
+        <p class="text-gray-700 leading-relaxed">
+          আপনার <strong class="text-[#2E3192]">ট্রাভেল পাস</strong> খুব শীঘ্রই
+          <strong class="text-green-600">ইমেল/হোয়াটসঅ্যাপে</strong> পাঠানো হবে।
+          অনুগ্রহ করে এটি <span class="font-semibold text-red-600">কারও সাথে শেয়ার করবেন না</span> এবং
+          <span class="font-semibold text-gray-800">প্রিন্ট কপি</span> সঙ্গে আনুন।
+        </p>
+        <p class="mt-4 text-sm italic text-gray-500">আপনার যাত্রা শুভ হোক!</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Schedule Table -->
+
+  
+
+  <section class="bg-gradient-to-r  rounded-2xl mt-6">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10">
+      <!-- Title -->
+      <h1 class="text-3xl md:text-4xl font-extrabold text-[#1E2A78] mb-6 flex items-center gap-3">
+        <i class="fa-solid fa-location-dot text-[#ff9800] text-4xl"></i>
+        Ghat Location
+      </h1>
+
+      <!-- Description -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <p class="text-gray-800 text-lg leading-relaxed mb-4">
+          <strong>******</strong> Dhaka, Bangladesh.
+        </p>
+        <p class="text-gray-700 italic mb-6">
+          ****** ঢাকা, বাংলাদেশ।
+        </p>
+
+        <!-- Map Button + Link -->
+        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+          <a href="https://www.google.com/maps?q=VIP+Jetty,+Dhaka+-+Narayanganj+Hwy,+Pagla+Jetty,+Fatullah+1421"
+            target="_blank"
+            class="inline-flex items-center bg-[#381d92] text-white px-5 py-3 rounded-lg font-semibold shadow hover:bg-[#2e1a7a] transition duration-300">
+            <i class="fa-solid fa-map-location-dot mr-2"></i> View on Google Maps
+          </a>
+        </div>
+
+        <!-- Embedded Live Map -->
+        <div class="mt-8 rounded-xl overflow-hidden shadow-md">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.3864312864665!2d90.50214277484656!3d23.871434584261107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b10e5cfcceef%3A0xe56402e4ed3f2c5a!2sVIP%20Jetty%20Ghat%2C%20Pagla%2C%20Narayanganj!5e0!3m2!1sen!2sbd!4v1692028712025!5m2!1sen!2sbd"
+            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+  <footer class="bg-white text-gray-800 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+
+      <!-- Sonargaon Tourism Text -->
+      <div class="flex-1 flex justify-center md:justify-start mb-6 md:mb-0">
+        <p class="text-lg font-bold uppercase tracking-wider text-black">Sonargaon Tourism</p>
+      </div>
+
+      <!-- Logo -->
+      <div class="flex-1 flex justify-center mb-6 md:mb-0">
+        <a href="https://sonargaontourism.com/">
+          <img src="/images/logo.jpg.webp" alt="Sonargaon Tourism Logo" class="w-32 md:w-40 object-contain" />
+        </a>
+      </div>
+
+      <!-- Social Icons, Contact & Messenger -->
+      <div class="flex-1 flex flex-col items-center md:items-end space-y-4">
+        <!-- Social Icons -->
+        <div class="flex space-x-4 text-xl justify-center md:justify-end w-full">
+          <a href="https://www.facebook.com/sonargaontourismcompany/" aria-label="Facebook"
+            class="text-black hover:bg-blue-700 bg-black/10 hover:bg-black p-2 rounded-full transition-all duration-300">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.youtube.com/@sonargaontourism" aria-label="YouTube"
+            class="text-black hover:text-white bg-black/10 hover:bg-red-600 p-2 rounded-full transition-all duration-300">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/sonargaon-tourism/" aria-label="LinkedIn"
+            class="text-black hover:text-white bg-black/10 hover:bg-blue-700 p-2 rounded-full transition-all duration-300">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+
+        <!-- Floating Contact + Messenger Buttons Side by Side -->
+        <div class="fixed bottom-8 right-6 z-50 flex items-center gap-4">
+          <!-- Contact Us Button -->
+          <button
+            class="bg-yellow-400 hover:bg-yellow-300 text-[#2E3192] font-bold px-6 py-2 rounded-full transition-all duration-300">
+            Contact Us
+          </button>
+
+          <!-- Messenger Floating Button -->
+          <a href="https://m.me/197083386826131" target="_blank" rel="noopener noreferrer"
+            aria-label="Chat with us on Messenger"
+            class="bg-white text-[#0084FF] text-2xl p-4 rounded-full shadow-lg hover:bg-[#0084FF] hover:text-white transition-all duration-300 flex items-center justify-center relative">
+            <i class="fab fa-facebook-messenger"></i>
+            <span
+              class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full animate-pulse">1</span>
+          </a>
+        </div>
+
+
+
+
+
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-gray-300 mt-6 py-4 text-center text-gray-500 text-xs">
+      &copy; 2025 LCT KAJAL. All Rights Reserved. Designed by ❤️ Sonargaon Tourism Team.
+    </div>
+  </footer>
+
+
+
+  <!-- SCRIPT -->
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("close-btn");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+
+
+    // This function handles the language switching logic
+    function showLanguage(lang) {
+      // Get both content divs
+      const contentEn = document.getElementById('content-en');
+      const contentBn = document.getElementById('content-bn');
+
+      // Get both button elements
+      const btnEn = document.getElementById('btn-en');
+      const btnBn = document.getElementById('btn-bn');
+
+      if (lang === 'en') {
+        // Show English, hide Bengali
+        contentEn.classList.remove('hidden');
+        contentBn.classList.add('hidden');
+
+        // Highlight English button, de-highlight Bengali button
+        btnEn.classList.add('bg-[#2E3192]', 'text-white', 'hover:bg-blue-800');
+        btnEn.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-300', 'hover:bg-gray-50');
+
+        btnBn.classList.remove('bg-[#2E3192]', 'text-white', 'hover:bg-blue-800');
+        btnBn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-300', 'hover:bg-gray-50');
+
+      } else if (lang === 'bn') {
+        // Show Bengali, hide English
+        contentBn.classList.remove('hidden');
+        contentEn.classList.add('hidden');
+
+        // Highlight Bengali button, de-highlight English button
+        btnBn.classList.add('bg-[#2E3192]', 'text-white', 'hover:bg-blue-800');
+        btnBn.classList.remove('text-gray-700', 'bg-white', 'border', 'border-gray-300', 'hover:bg-gray-50');
+
+        btnEn.classList.remove('bg-[#2E3192]', 'text-white', 'hover:bg-blue-800');
+        btnEn.classList.add('text-gray-700', 'bg-white', 'border', 'border-gray-300', 'hover:bg-gray-50');
+      }
+    }
+
+    // Initialize the page to show the English content on load
+    document.addEventListener('DOMContentLoaded', () => {
+      showLanguage('en');
+    });
+
+    const scheduleData = {
+      "title": "Upcoming Schedule",
+      "subtitle": "Cox's Bazar (Inani) – Saint Martin – Cox's Bazar (Inani)",
+      "note": "Schedule may change with tidal state",
+      "ferry_name": "Bay Cruiser One Schedule",
+      "schedule": [
+        { "date": "1-Jan-2026", "day": "Thursday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "2-Jan-2026", "day": "Friday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "3-Jan-2026", "day": "Saturday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "4-Jan-2026", "day": "Sunday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "5-Jan-2026", "day": "Monday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "6-Jan-2026", "day": "Tuesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "7-Jan-2026", "day": "Wednesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "8-Jan-2026", "day": "Thursday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "9-Jan-2026", "day": "Friday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "10-Jan-2026", "day": "Saturday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "11-Jan-2026", "day": "Sunday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "12-Jan-2026", "day": "Monday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "13-Jan-2026", "day": "Tuesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "14-Jan-2026", "day": "Wednesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "15-Jan-2026", "day": "Thursday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "16-Jan-2026", "day": "Friday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "17-Jan-2026", "day": "Saturday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "18-Jan-2026", "day": "Sunday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "19-Jan-2026", "day": "Monday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "20-Jan-2026", "day": "Tuesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "21-Jan-2026", "day": "Wednesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "22-Jan-2026", "day": "Thursday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "23-Jan-2026", "day": "Friday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "24-Jan-2026", "day": "Saturday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "25-Jan-2026", "day": "Sunday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "26-Jan-2026", "day": "Monday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "27-Jan-2026", "day": "Tuesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "28-Jan-2026", "day": "Wednesday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "29-Jan-2026", "day": "Thursday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" },
+        { "date": "30-Jan-2026", "day": "Friday", "departure_from_nuniachora_bwta_ghat_to_st_martins_island": "8:00 AM", "departure_from_st_martins_island_to_nuniachora_bwta_ghat": "3:00 PM" }
+      ]
+    };
+
+    // Populate header info
+    document.getElementById("schedule-title").textContent = scheduleData.title;
+    document.getElementById("schedule-subtitle").textContent = scheduleData.subtitle;
+    document.getElementById("schedule-note").textContent = "⚠️ " + scheduleData.note;
+    document.getElementById("ferry-name").textContent = scheduleData.ferry_name;
+
+    // Render table rows dynamically
+    const tbody = document.getElementById("schedule-table-body");
+    scheduleData.schedule.forEach(item => {
+      const row = `
+    <tr class="hover:bg-gray-100 text-center">
+      <td class="py-2 font-medium">${item.date}</td>
+      <td>${item.day}</td>
+      <td>${item.departure_from_nuniachora_bwta_ghat_to_st_martins_island}</td>
+      <td>${item.departure_from_st_martins_island_to_nuniachora_bwta_ghat}</td>
+    </tr>
+  `;
+      tbody.innerHTML += row;
+    });
+
+
+
+
+    // Dynamic word animation function using inline styles
+    function animateDynamicWord() {
+      const dynamicWord = document.getElementById('dynamic-word');
+      if (dynamicWord) {
+        // Reset animation
+        dynamicWord.style.opacity = '0';
+        dynamicWord.style.transform = 'translateY(-20px)';
+
+        // Trigger animation
+        setTimeout(() => {
+          dynamicWord.style.opacity = '1';
+          dynamicWord.style.transform = 'translateY(0)';
+        }, 50);
+      }
+    }
+
+    // Example: Auto-rotate words (optional)
+    const words = ['Ships', 'Hotel', 'Restaurant'];
+    let currentIndex = 0;
+
+    function changeWord() {
+      const dynamicWord = document.getElementById('dynamic-word');
+      if (dynamicWord) {
+        // Fade out
+        dynamicWord.style.opacity = '0';
+        dynamicWord.style.transform = 'translateY(-20px)';
+
+        // Change word and fade in
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % words.length;
+          dynamicWord.textContent = words[currentIndex];
+          dynamicWord.style.opacity = '1';
+          dynamicWord.style.transform = 'translateY(0)';
+        }, 250);
+      }
+    }
+
+    // Auto-change every 3 seconds (remove if not needed)
+    setInterval(changeWord, 3000);
+
+
+
+
+
+
+    // Function to build seat plan cards
+    async function buildSeatPlanCards() {
+      try {
+        // Fetch the JSON data
+        const response = await fetch('./images/json/seatPlan.json');
+        const data = await response.json();
+
+        // Get the container element
+        const container = document.getElementById('seatPlanContainer');
+
+        // Clear existing content
+        container.innerHTML = '';
+
+        // Loop through each seat plan and create cards
+        data.seat_plans.forEach((seatPlan, index) => {
+          const card = createSeatCard(seatPlan, index);
+          container.innerHTML += card;
+        });
+
+      } catch (error) {
+        console.error('Error loading seat plans:', error);
+        document.getElementById('seatPlanContainer').innerHTML =
+          '<p style="text-align: center; color: #ef4444;">Error loading seat plans. Please try again later.</p>';
+      }
+    }
+
+    // Function to create individual seat card HTML
+    function createSeatCard(seatPlan, index) {
+      return `
+        <div class="bg-white shadow-xl rounded-2xl overflow-hidden max-w-4xl mx-auto flex flex-col md:flex-row">
+          <figure class="flex-shrink-0 w-full md:w-80">
+            <a href="${seatPlan.book_now_link}">
+              <img class="w-full h-48 sm:h-52 md:h-52 object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+                src="${seatPlan.image_url}" alt="${seatPlan.class}" />
+            </a>
+          </figure>
+          <div class="card-body text-white bg-gradient-to-r from-[#0E0F2C] to-[#2E3192] justify-between flex-1 p-4 sm:p-6 md:p-6 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <a href="${seatPlan.book_now_link}">
+                <div>
+                  <h2 class="card-title text-lg font-bold">${seatPlan.class}</h2>
+                  <p class="text-sm text-gray-200">${seatPlan.quantity}</span></p>
+                  ${seatPlan.details ? `<p style="font-size: 0.875rem; color: #e5e7eb; margin-top: 0.25rem;">${seatPlan.details}</p>` : ''}
+                </div>
+              </a>
+              <a href="${seatPlan.book_now_link}" class="block w-full md:w-auto">
+                <div class="text-left sm:text-left md:text-right">
+                  <div class="flex flex-col sm:flex-row md:justify-end justify-start md:items-end items-start gap-6">
+                    <!-- One Way -->
+                    <div class="text-left md:text-right">
+                      <h2 class="text-2xl font-bold text-white">${seatPlan.one_way_price}</h2>
+                      <p class="text-lg text-white">One Way</p>
+                    </div>
+                    <!-- Round Trip -->
+                    <div class="text-left md:text-right">
+                      <h2 class="text-2xl font-bold text-white">${seatPlan.round_trip_price}</h2>
+                      <p class="text-lg text-white">Round Trip</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+              <a href="${seatPlan.book_now_link}">
+                <button class="btn btn-warning px-6 rounded-3xl font-semibold w-full sm:w-auto">Book Now</button>
+              </a>
+              <a href="${seatPlan.messenger_link}">
+                <button class="btn btn-outline btn-warning rounded-3xl px-6 font-semibold w-full sm:w-auto">Messenger</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        `;
+    }
+
+     // Intersection Observer to animate last 2 cards when in view
+    const cards = document.querySelectorAll('.last-card');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0');
+          entry.target.classList.remove('translate-x-[-50px]');
+          entry.target.classList.remove('translate-x-[50px]');
+          entry.target.classList.add('translate-x-0');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    cards.forEach(card => observer.observe(card));
+
+    // for slide bar
+  const slider = document.getElementById('slider');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const scrollAmount = 300; // px per click
+
+  prev.addEventListener('click', () => {
+    slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  next.addEventListener('click', () => {
+    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  //clickable with a popup lightbox view
+   function openLightbox() {
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+
+    // Call the function when the page loads
+    document.addEventListener('DOMContentLoaded', buildSeatPlanCards);
+
+  </script>
+</body>
+
+</html>
