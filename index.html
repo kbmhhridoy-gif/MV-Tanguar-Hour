@@ -75,6 +75,7 @@
       }
     }
 
+    /* scroll buisness*/
     .animate-scroll {
       display: flex;
       width: max-content;
@@ -279,6 +280,8 @@
   </div>
     
   </header>
+
+
 
 
   <section class="bg-white py-3 overflow-hidden">
@@ -560,7 +563,7 @@
                 class="w-20 h-20 object-contain rounded-md shadow-md"
               />
               <img
-                src="/images/logo.jpg.webp"
+                src="images/logo pertner.PNG"
                 alt="M4RD"
                 class="w-20 h-20 object-contain rounded-md shadow-md"
               />
@@ -724,6 +727,7 @@
   </div>
 </section>
 
+
 <!-- 🌅 Featured Sundarban Package Highlight with Lightbox -->
 <section class="relative bg-gradient-to-b from-white to-blue-50 py-16">
   <div class="max-w-6xl mx-auto px-6">
@@ -765,6 +769,64 @@
       <!-- Decorative Border Glow -->
       <div class="absolute inset-0 border-4 border-transparent group-hover:border-amber-400 rounded-3xl transition duration-500"></div>
     </div>
+    <!-- 📅 Trip Schedule Table -->
+    <div class="mt-12 bg-white shadow-lg rounded-2xl overflow-hidden">
+      <h3 class="text-2xl font-semibold text-center text-amber-700 py-4 bg-blue-50">
+        Upcoming Trip Schedule (Oct 2025 – Feb 2026)
+      </h3>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-center border-collapse">
+          <thead class="bg-amber-600 text-white">
+            <tr>
+              <th class="p-3">Month</th>
+              <th class="p-3">Trip Dates</th>
+              <th class="p-3">Duration</th>
+              <th class="p-3">Package Type</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-800">
+            <tr class="border-b hover:bg-blue-50">
+              <td class="p-3 font-medium">October 2025</td>
+              <td class="p-3">30 – 31</td>
+              <td class="p-3">3 Days / 2 Nights</td>
+              <td class="p-3">Luxury Cruise</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50">
+              <td class="p-3 font-medium">November 2025</td>
+              <td class="p-3">2–4, 9–11, 16–18, 23–25</td>
+              <td class="p-3">3 Days / 2 Nights</td>
+              <td class="p-3">Standard & First Class</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50">
+              <td class="p-3 font-medium">December 2025</td>
+              <td class="p-3">1–3, 8–10, 15–17, 22–24, 29–31</td>
+              <td class="p-3">3 Days / 2 Nights</td>
+              <td class="p-3">Special Holiday Cruise</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50">
+              <td class="p-3 font-medium">January 2026</td>
+              <td class="p-3">1–3, 8–10, 15–17, 22–24, 29–31</td>
+              <td class="p-3">3 Days / 2 Nights</td>
+              <td class="p-3">New Year Package</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50">
+              <td class="p-3 font-medium">February 2026</td>
+              <td class="p-3">1–3, 8–10</td>
+              <td class="p-3">3 Days / 2 Nights</td>
+              <td class="p-3">Spring Cruise</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-6 bg-blue-50 text-center">
+        <p class="text-lg font-medium text-gray-700">
+          Popular Packages: <span class="text-amber-600 font-semibold">20,000৳ (Second Floor)</span> |
+          <span class="text-amber-600 font-semibold">18,000৳ (First Floor)</span>
+        </p>
+      </div>
+    </div>
   </div>
 
   <!-- 🌌 Lightbox Modal -->
@@ -789,25 +851,68 @@
 
 
 
+
   <!-- Travel Pass and Tickets -->
   <section>
-    <div class="bg-white py-8">
+  <!-- 🟦 Section Title -->
+     <!-- Title -->
+  <div class="flex items-center mb-6 mt-6 ml-5">
+    <h2 class="text-3xl sm:text-4xl font-bold text-[#2E3192] font-sans">
+      Travel Confirmation
+    </h2>
+  </div>
 
-      <!-- Section Title (Left-aligned) -->
-      <div class="px-4 sm:px-6 md:px-8">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl text-[#2E3192] font-sans font-bold mt-8 mb-8 text-left">
-          Travel Pass and Tickets
-        </h1>
-      </div>
-
-      <!-- Image Container (Centered) -->
-      <div class="flex justify-center px-4 sm:px-6 md:px-8">
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-full md:max-w-3xl">
-          <img src="/Cabin/travel pass.png" alt="Travel Pass" class="w-full h-auto object-contain" />
+  <!-- Subtitle -->
+  <p class="text-gray-700 mb-6 text-base sm:text-lg ml-5">
+    Your booking is confirmed! Get ready for an unforgettable journey. Here are your travel details :-
+  </p>
+<!-- 🧾 Travel Confirmation Form -->
+  <div class="bg-white shadow-xl rounded-2xl p-8 sm:p-10 border border-gray-100 max-w-2xl mx-auto">
+    <form id="travelForm" onsubmit="sendToWhatsApp(event)">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Full Name</label>
+          <input type="text" id="name" required placeholder="Enter your name"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E3192]" />
         </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Destination</label>
+          <input type="text" id="destination" required placeholder="e.g. Cox’s Bazar"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E3192]" />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Travel Date</label>
+          <input type="date" id="date" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E3192]" />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Package Type</label>
+          <select id="package" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E3192]">
+            <option value="">Select a package</option>
+            <option>Sea Cruise Premium</option>
+            <option>Luxury Cabin</option>
+            <option>Group Tour</option>
+            <option>Custom Trip</option>
+          </select>
+        </div>
+
       </div>
 
-    </div>
+      <div class="mt-8 text-center">
+        <button type="submit"
+          class="bg-[#2E3192] text-white px-10 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-blue-800 hover:scale-105 transition-all duration-300">
+          ✅ Confirm 
+        </button>
+      </div>
+    </form>
+  </div>
+
+
 
     <!-- Language Buttons & Messages -->
     <div class="max-w-md mx-auto mt-10 rounded-xl overflow-hidden shadow-2xl bg-white">
@@ -858,21 +963,8 @@
 
   <section class="bg-gradient-to-r  rounded-2xl mt-6">
     <div class="max-w-5xl mx-auto px-6 lg:px-10">
-      <!-- Title -->
-      <h1 class="text-3xl md:text-4xl font-extrabold text-[#1E2A78] mb-6 flex items-center gap-3">
-        <i class="fa-solid fa-location-dot text-[#ff9800] text-4xl"></i>
-        Ghat Location
-      </h1>
-
       <!-- Description -->
       <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-        <p class="text-gray-800 text-lg leading-relaxed mb-4">
-          <strong>******</strong> Dhaka, Bangladesh.
-        </p>
-        <p class="text-gray-700 italic mb-6">
-          ****** ঢাকা, বাংলাদেশ।
-        </p>
-
         <!-- Map Button + Link -->
         <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <a href="https://www.google.com/maps?q=VIP+Jetty,+Dhaka+-+Narayanganj+Hwy,+Pagla+Jetty,+Fatullah+1421"
@@ -965,6 +1057,37 @@
 
   <!-- SCRIPT -->
   <script>
+    //hero slider
+     const slider = document.getElementById("hero-slider");
+  const slides = slider.children;
+  let currentSlide = 0;
+
+  function slideNext() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+  setInterval(slideNext, 4000); // every 4 seconds
+
+  /* ✨ Dynamic Word Animation */
+  const words = ["Ships", "Hotel", "Restaurant"];
+  let wordIndex = 0;
+
+  function changeWord() {
+    const dynamicWord = document.getElementById("dynamic-word");
+    if (dynamicWord) {
+      dynamicWord.style.opacity = "0";
+      dynamicWord.style.transform = "translateY(-10px)";
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        dynamicWord.textContent = words[wordIndex];
+        dynamicWord.style.opacity = "1";
+        dynamicWord.style.transform = "translateY(0)";
+      }, 300);
+    }
+  }
+  setInterval(changeWord, 3000);
+
+
     const menuBtn = document.getElementById("menu-btn");
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
@@ -1106,32 +1229,6 @@
       }
     }
 
-    // Example: Auto-rotate words (optional)
-    const words = ['Ships', 'Hotel', 'Restaurant'];
-    let currentIndex = 0;
-
-    function changeWord() {
-      const dynamicWord = document.getElementById('dynamic-word');
-      if (dynamicWord) {
-        // Fade out
-        dynamicWord.style.opacity = '0';
-        dynamicWord.style.transform = 'translateY(-20px)';
-
-        // Change word and fade in
-        setTimeout(() => {
-          currentIndex = (currentIndex + 1) % words.length;
-          dynamicWord.textContent = words[currentIndex];
-          dynamicWord.style.opacity = '1';
-          dynamicWord.style.transform = 'translateY(0)';
-        }, 250);
-      }
-    }
-
-    // Auto-change every 3 seconds (remove if not needed)
-    setInterval(changeWord, 3000);
-
-
-
 
 
 
@@ -1252,6 +1349,59 @@
     // Call the function when the page loads
     document.addEventListener('DOMContentLoaded', buildSeatPlanCards);
 
+    
+    // Populate HTML dynamically
+    document.getElementById("tripName").innerText = ticket.trip;
+    document.getElementById("tripDate").innerText = `${ticket.date} | ${ticket.time}`;
+    document.getElementById("passengerName").innerText = ticket.passengerName;
+    document.getElementById("seat").innerText = ticket.seat;
+    document.getElementById("travelClass").innerText = ticket.travelClass;
+    document.getElementById("bookingRef").innerText = ticket.bookingRef;
+
+    // Download Ticket Button (Optional: generate PDF or plain text)
+    document.getElementById("downloadTicket").addEventListener("click", () => {
+      const ticketContent = `
+        Trip: ${ticket.trip}
+        Date: ${ticket.date} | Time: ${ticket.time}
+        Passenger: ${ticket.passengerName}
+        Seat: ${ticket.seat}
+        Class: ${ticket.travelClass}
+        Booking Ref: ${ticket.bookingRef}
+      `;
+      const blob = new Blob([ticketContent], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "ticket.txt";
+      link.click();
+    });
+
+    // Add to Calendar (.ics file)
+     function sendToWhatsApp(event) {
+    event.preventDefault();
+
+    // Replace with your WhatsApp number (with country code, no +)
+    const phoneNumber = "01901378925"; // Example: 01901378925
+
+    // Get form values
+    const name = document.getElementById("name").value.trim();
+    const destination = document.getElementById("destination").value.trim();
+    const date = document.getElementById("date").value.trim();
+    const packageType = document.getElementById("package").value.trim();
+
+    // Build message
+    const message = `🌍 *Travel Confirmation Request*\n\n` +
+                    `👤 Name: ${name}\n` +
+                    `📍 Destination: ${destination}\n` +
+                    `📅 Date: ${date}\n` +
+                    `🛳 Package: ${packageType}\n\n` +
+                    `Please confirm my booking !!.`;
+
+    // WhatsApp API link
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${01901378925}&text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp
+    window.open(whatsappURL, "_blank");
+  }
   </script>
 </body>
 
