@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LCT KAJAL — MV Tangura Haor</title>
+
+    <!-- Tailwind & DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+         /* ✅ Fix for Navbar Overlap on All Devices (Next Hub, Hub Max, etc.) */
+    header {
+      padding-top: 70px;
+      /* adjust if your navbar is taller */
+    }
+
+    /* For larger smart displays like Nest Hub Max */
+    @media (min-width: 924px) {
+      header {
+        padding-top: 50px;
+      }
+    }
+
+    /* For smaller smart displays / tablets */
+    @media (max-width: 668px) {
+      header {
+        padding-top: 60px;
+      }
+    }
+
+
+
+      :root {
+        --brand: #2e3192;
+        --accent: #00bcd4;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-family: 'Lato', system-ui, -apple-system, sans-serif;
+      }
+      header {
+        padding-top: 70px;
+      } /* fix navbar overlap */
+      /* animated word */
+      @keyframes slideWord {
+        0% {
+          opacity: 0;
+          transform: translateY(20%);
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-20%);
+        }
+      }
+      .slide-anim {
+        animation: slideWord 4s ease-in-out infinite;
+        display: inline-block;
+      }
+      /* logos scroll */
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .animate-scroll {
+        display: flex;
+        width: max-content;
+        animation: scroll 20s linear infinite;
+        gap: 1.5rem;
+      }
+      .animate-scroll:hover {
+        animation-play-state: paused;
+      }
+      /* hide scrollbars */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      /* lightbox */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.28s ease-in-out;
+      }
+    </style>
+
+
+  </head>
+  <body class="bg-white text-gray-800">
+
+      <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full bg-white text-black shadow z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between md:justify-center gap-4 px-6 py-2">
+
+      <!-- Left Section (Logo + Title) -->
+      <div class="flex items-center gap-4">
+        <img src="images/logo.jpg.webp" alt="Logo" class="h-16 w-16 rounded-md object-cover" />
+        <h1
+          class="font-sans tracking-wide font-bold text-[20px] md:text-[20px] sm:text-[20px] leading-none md:text-left">
+          <a href="https://sonargaontourism.com/">
+            <span class="text-black block md:inline">SONARGOAN</span>
+            <span class="text-black block md:inline">TOURISM</span>
+          </a>
+        </h1>
+      </div>
+
+      <!-- Hamburger (Visible on Mobile) -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-4 font-bold">
+        <a href="https://sonargaontourism.com/ships/" class="hover:text-primary ml-8"><span>Ships</span></a>
+        <a href="https://sonargaontourism.com/contact/" class="hover:text-primary ml-4"><span>Contact</span></a>
+        <a href="https://sonargaontourism.com/faq/" class="hover:text-primary ml-4"><span>FAQ</span></a>
+
+        <a href="https://sonargaontourism.com/shop/">
+          <button
+            class="px-6 py-2 ml-8 rounded-3xl font-bold text-white bg-[#381d92] relative overflow-hidden hover:bg-gray-800 transition-all duration-300 sm:text-nowrap">
+            <span class="absolute inset-0 bg-gradient-to-r opacity-75 blur-lg animate-pulse"></span>
+            <span class="relative">Reserve Now</span>
+          </button>
+        </a>
+
+        <img class="h-[40px] w-[60px]" src="/images/card buy.svg" alt="Cart" />
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden flex-col items-center bg-white shadow-md py-4 space-y-3 font-semibold">
+    <a href="ips#shhttps://sonargaontourism.com/ships/" class="hover:text-primary">Ships</a>
+    <a href="https://sonargaontourism.com/contact/" class="hover:text-primary">Contact</a>
+    <a href="https://sonargaontourism.com/faq/" class="hover:text-primary">FAQ</a>
+    <a href="https://sonargaontourism.com/shop/">
+      <button
+        class="px-6 py-2 rounded-3xl font-bold text-white bg-[#381d92] relative overflow-hidden hover:text-[#381d92] transition-all duration-300">
+        <span
+          class="absolute inset-0 bg-gradient-to-r from-[#381d92] via-indigo-500 to-blue-500 opacity-75 blur-lg animate-pulse"></span>
+        <span class="relative">Reserve Now</span>
+      </button>
+    </a>
+    <a href="https://sonargaontourism.com/"><img class="h-[40px] w-[60px]" src="/images/card buy.svg" alt="Cart" /></a>
+  </div>
+
+  <!-- Mobile Slide Sidebar -->
+  <div id="sidebar"
+    class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-40">
+    <div class="flex justify-between items-center p-4 border-b">
+      <h2 class="text-xl font-bold text-primary">Menu</h2>
+      <button id="close-btn" class="focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col space-y-4 font-semibold text-lg mt-4 pl-6">
+      <a href="#ships" class="hover:text-primary">Ships</a>
+      <a href="#hotels" class="hover:text-primary">Hotels</a>
+      <a href="#restaurants" class="hover:text-primary">Restaurants</a>
+      <a href="https://sonargaontourism.com/shop/">
+        <button
+          class="px-6 py-2 rounded-3xl font-bold text-white bg-[#381d92] relative overflow-hidden hover:text-[#381d92] transition-all duration-300">
+          <span
+            class="absolute inset-0 bg-gradient-to-r from-[#381d92] via-indigo-500 to-blue-500 opacity-75 blur-lg animate-pulse"></span>
+          <span class="relative">Reserve Now</span>
+        </button>
+      </a>
+      <img class="h-[40px] w-[60px] mt-3" src="/images/card buy.svg" alt="Cart" />
+    </div>
+  </div>
+
+  <!-- Overlay (click to close sidebar) -->
+  <div id="overlay"
+    class="fixed inset-0 bg-black bg-opacity-40 hidden z-30 transition-opacity duration-300 ease-in-out"></div>
+
+
+    <!-- HERO -->
+    <header class="relative text-white rounded-md overflow-hidden">
+      <div
+        class="hero bg-cover bg-center bg-no-repeat flex flex-col w-full justify-start items-start h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[80vh]"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.35),
+              rgba(0, 0, 0, 0.35)
+            ),
+            url('/images/tangura haor sundarban.jpg');
+        "
+      >
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <div
+          class="absolute top-16 mt-16 left-0 right-0 flex justify-center items-center px-4"
+        >
+          <h1
+            class="text-center text-3xl sm:text-4xl md:text-5xl font-semibold tracking-wide flex gap-2"
+          >
+            <span class="opacity-80">Travel In Our</span>
+            <span class="relative overflow-hidden h-[1.2em] inline-block">
+              <span
+                id="dynamic-word"
+                class="inline-block text-white underline decoration-4 decoration-slate-100 slide-anim"
+                >Ships</span
+              >
+            </span>
+          </h1>
+        </div>
+
+        <div
+          class="relative z-10 mt-40 px-4 sm:px-6 md:px-20 py-4 rounded-xl w-[90%] sm:w-[80%] md:w-[60%] lg:w-auto max-w-lg md:max-w-2xl lg:max-w-4xl"
+        >
+          <h1
+            class="text-4xl sm:text-4xl md:text-6xl lg:text-8xl font-extrabold text-white drop-shadow-2xl text-center"
+          >
+            <span class="block">MV</span>
+            <span class="block mt-2">TANGOUR</span>
+            <span class="block mt-2">HOUR</span>
+          </h1>
+
+          <p
+            class="text-sm sm:text-base md:text-lg lg:text-2xl font-bold mt-3 opacity-80 text-center"
+          >
+            শিপ ব্যবস্থাপক <span>সোনারগাঁ টুরিজম</span>
+          </p>
+          <p
+            class="text-[10px] sm:text-xs md:text-sm lg:text-2xl font-semibold opacity-80 text-center"
+          >
+            Ship Management by Sonargaon Tourism
+          </p>
+        </div>
+      </div>
+    </header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+      <!-- bangla english button -->
+    <section class="mt-6">
+            <div class="fixed bottom-[105px] right-6 flex gap-3 z-50">
+                <button id="btnEnglish"
+                    class="bg-blue-800 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all">
+                    English
+                </button>
+                <button id="btnBangla"
+                    class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-500 transition-all">
+                    বাংলা
+                </button>
+            </div>
+    </section>
+
+      <!-- Business associates (scroll logos) -->
+    <section class="bg-white py-3 overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-6 px-4 sm:px-6 lg:px-8">
+
+        <!-- 🟦 Fixed Title (Now stays on one line across devices) -->
+        <div
+        
+            class="font-sans mt-4 font-semibold text-[18px] sm:text-[20px] md:text-[22px] text-blue-700 flex-shrink-0 w-full md:w-60 text-center md:text-left whitespace-nowrap">
+            Our Business Associates
+        </div>
+
+        <!-- 🟨 Scrolling Logos -->
+        <div class="scroll-container relative overflow-hidden flex-1 w-full">
+            <div class="animate-scroll flex items-center gap-6 sm:gap-8 md:gap-10 whitespace-nowrap">
+
+            <!-- 🌀 First Logo Set -->
+            <div class="flex items-center gap-6 sm:gap-8 md:gap-10 opacity-70">
+
+                <!-- Logo 1 -->
+                <div
+                class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[120px] sm:min-w-[160px]">
+                <img src="images/1.png" alt="Bangladesh Parjatan Corporation"
+                    class="h-10 sm:h-12 md:h-14 object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Bangladesh <br />Parjatan <br />Corporation
+                </p>
+                </div>
+
+                <!-- Logo 2 -->
+                <div
+                class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+                <img src="images/2.png" alt="BIWTA" class="h-10 sm:h-12 md:h-14 object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Bangladesh Inland <br />Water Transport <br />Authority (BIWTA)
+                </p>
+                </div>
+
+                <!-- Logo 3 -->
+                <div
+                class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+                <img src="images/3.png" alt="BIWTC" class="h-10 sm:h-12 md:h-14 object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Bangladesh Inland <br />Water Transport <br />Corporation (BIWTC)
+                </p>
+                </div>
+
+                <!-- Logo 4 -->
+                <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+                <img src="/images/5.png" alt="Bangladesh Tourism Board"
+                    class="h-12 sm:h-14 md:h-16 w-auto object-contain" />
+                </div>
+
+                <!-- Logo 5 -->
+                <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+                <img src="/images/logo-2.png.jpg" alt="Department of Shipping Bangladesh"
+                    class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+                <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Department <br /> of Shipping <br /> Bangladesh
+                </p>
+                </div>
+
+
+                <!-- 🔁 Duplicate Logos for Infinite Scroll -->
+                <div class="flex items-center gap-6 sm:gap-8 md:gap-10">
+
+                <!-- Logo 1 -->
+                <div
+                    class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[120px] sm:min-w-[160px]">
+                    <img src="images/1.png" alt="Bangladesh Parjatan Corporation"
+                    class="h-10 sm:h-12 md:h-14 object-contain" />
+                    <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Bangladesh <br />Parjatan <br />Corporation
+                    </p>
+                </div>
+
+                <!-- Logo 2 -->
+                <div
+                    class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+                    <img src="images/2.png" alt="BIWTA" class="h-10 sm:h-12 md:h-14 object-contain" />
+                    <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Bangladesh Inland <br />Water Transport <br />Authority (BIWTA)
+                    </p>
+                </div>
+
+                <!-- Logo 3 -->
+                <div
+                    class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left min-w-[130px] sm:min-w-[160px]">
+                    <img src="images/3.png" alt="BIWTC" class="h-10 sm:h-12 md:h-14 object-contain" />
+                    <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Bangladesh Inland <br />Water Transport <br />Corporation (BIWTC)
+                    </p>
+                </div>
+
+                <!-- Logo 4 -->
+                <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+                    <img src="/images/5.png" alt="Bangladesh Tourism Board"
+                    class="h-12 sm:h-14 md:h-16 w-auto object-contain" />
+                </div>
+
+                <!-- Logo 5 -->
+                <div class="flex items-center gap-2 min-w-[100px] sm:min-w-[140px]">
+                    <img src="/images/logo-2.png.jpg" alt="Department of Shipping Bangladesh"
+                    class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+                    <p class="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-tight">
+                    Department <br /> of Shipping <br /> Bangladesh
+                    </p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- hot deals -->
+    <section>
+        <div  class="max-w-7xl mx-auto py-12 px-6">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <!-- 🟩 Left Column (Hot Deals) -->
+            <div class="lg:col-span-2">
+              <h2 id="hotdeals-title" class="text-3xl font-black text-gray-800 mb-6">Hot Deals</h2>
+              <div class="flex flex-wrap justify-start gap-8">
+                <!-- 🔹 MV Tangura Haor - Second Floor -->
+                <div
+                  class="w-full sm:w-80 border rounded-xl shadow-lg bg-white relative"
+                >
+                  <span id="hotdeals-title" class="absolute top-0 right-0 mt-4 mr-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase"
+                    >SALE</span
+                  >
+                  <a
+                    href="https://sonargaontourism.com/product/mv-tangura-haor-cruise/"
+                  >
+                    <figure class="px-4 pt-4">
+                      <img
+                        src="/images/MV tangura (1).png"
+                        alt="MV Tangura Haor Cruise"
+                        class="rounded-xl w-full h-40 object-cover"
+                      />
+                    </figure>
+                  </a>
+                  <div class="card-body px-4 pb-4 items-center text-center">
+                    <a
+                      href="https://sonargaontourism.com/product/mv-tangura-haor-cruise/"
+                    >
+                      <p class="text-gray-700 text-sm leading-snug font-bold">
+                        MV Tangura Haor Ship (Dhaka–Sundarban–Dhaka) — Second
+                        Floor (Luxury AC Cruise)
+                      </p>
+                      <p class="text-gray-500 line-through mt-2 text-sm">
+                        21,400.00৳
+                      </p>
+                      <p class="text-primary text-lg font-bold mt-1">
+                        20,000.00 ৳
+                      </p>
+                    </a>
+                    <div class="card-actions mt-4">
+                      <a
+                        href="https://sonargaontourism.com/product/mv-tangura-haor-cruise/"
+                      >
+                        <button
+                          class="bg-purple-800 text-white px-6 py-2 rounded-lg hover:bg-purple-700 font-semibold text-sm"
+                        >
+                          Select options
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 🔹 MV Tangura Haor - First Floor -->
+                <div
+                  class="w-full sm:w-80 border rounded-xl shadow-lg bg-white relative"
+                >
+                  <span
+                    class="absolute top-0 right-0 mt-4 mr-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase"
+                    >SALE</span
+                  >
+                  <a
+                    href="https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/"
+                  >
+                    <figure class="px-4 pt-4">
+                      <img
+                        src="/images/MV tangura (4).png"
+                        alt="MV Tangura Haor Cruise"
+                        class="rounded-xl w-full h-40 object-cover"
+                      />
+                    </figure>
+                  </a>
+                  <div class="card-body px-4 pb-4 items-center text-center">
+                    <a
+                      href="https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/"
+                    >
+                      <p class="text-gray-700 text-sm leading-snug font-bold">
+                        MV Tangura Haor Ship (Dhaka–Sundarban–Dhaka) — First
+                        Floor (Luxury AC Cruise)
+                      </p>
+                      <p class="text-gray-500 line-through mt-2 text-sm">
+                        19,500.00৳
+                      </p>
+                      <p class="text-primary text-lg font-bold mt-1">
+                        18,000.00 ৳
+                      </p>
+                    </a>
+                    <div class="card-actions mt-4">
+                      <a
+                        href="https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/"
+                      >
+                        <button
+                          class="bg-purple-800 text-white px-6 py-2 rounded-lg hover:bg-purple-700 font-semibold text-sm"
+                        >
+                          Select options
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 🟪 Right Column (Booking Process + History) -->
+            <div class="lg:col-span-1 mr-6">
+              <h2 class="text-3xl font-black text-gray-800 mb-6">
+                Booking Process
+              </h2>
+
+              <!-- Booking Steps -->
+              <div
+                class="flex items-center justify-center space-x-2 sm:space-x-4 mb-8"
+              >
+                <div class="flex flex-col items-center">
+                  <div class="bg-blue-800 text-white rounded-full p-3 text-2xl">
+                    <i class="fas fa-list-check"></i>
+                  </div>
+                  <p class="text-lg font-black text-gray-800 mt-2">1</p>
+                  <p
+                    class="text-sm font-bold text-center text-gray-700 leading-none"
+                  >
+                    Choose
+                  </p>
+                  <p class="text-xs text-center text-gray-600 leading-none">
+                    Package/Hotel/Bus
+                  </p>
+                </div>
+
+                <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+
+                <div class="flex flex-col items-center">
+                  <div class="bg-blue-800 text-white rounded-full p-3 text-2xl">
+                    <i class="fas fa-comment-dots"></i>
+                  </div>
+                  <p class="text-lg font-black text-gray-800 mt-2">2</p>
+                  <p
+                    class="text-sm font-bold text-center text-gray-700 leading-none"
+                  >
+                    Order or
+                  </p>
+                  <p class="text-xs text-center text-gray-600 leading-none">
+                    Chat/Call Us
+                  </p>
+                </div>
+
+                <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+
+                <div class="flex flex-col items-center">
+                  <div class="bg-blue-800 text-white rounded-full p-3 text-2xl">
+                    <i class="fas fa-credit-card"></i>
+                  </div>
+                  <p class="text-lg font-black text-gray-800 mt-2">3</p>
+                  <p
+                    class="text-sm font-bold text-center text-gray-700 leading-none"
+                  >
+                    Pay Online
+                  </p>
+                  <p class="text-xs text-center text-gray-600 leading-none">
+                    Bkash/Card/Bank
+                  </p>
+                </div>
+              </div>
+
+              <!-- ✅ Hover to View Full Image -->
+              <div class="mt-10 relative group">
+                <h3 class="text-xl font-black text-purple-700 mb-4 text-center">
+                  History of MV Tangura Haor
+                </h3>
+
+                <!-- Small Image -->
+                <div class="w-full rounded-lg overflow-hidden shadow-md">
+                  <img
+                    src="/Cabin/history.png"
+                    alt="MV Tangura Haor History"
+                    class="w-full h-48 object-cover cursor-zoom-in"
+                  />
+                </div>
+
+                <!-- 🪄 Hidden Full Preview on Hover -->
+                <div
+                  class="absolute inset-0 hidden group-hover:flex items-center justify-center bg-black/70 backdrop-blur-sm"
+                >
+                  <img
+                    src="/Cabin/history.png"
+                    alt="MV Tangura Haor History Large"
+                    class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl border-4 border-white"
+                  />
+                </div>
+              </div>
+              <!-- Text -->
+              <div class="text-center mt-4">
+                <h2 class="text-base font-semibold text-gray-900">
+                  Ship Owner & Operated by Tiger Tours LTD, Sonargaon Tourism &
+                  M4RD
+                </h2>
+
+                <!-- ✅ Partner Logos -->
+                <div class="flex justify-center items-center gap-6 mt-3">
+                  <img
+                    src="/Cabin/tiger tour.jpg"
+                    alt="Tiger Tours LTD"
+                    class="w-20 h-20 object-contain rounded-md shadow-md"
+                  />
+                  <img
+                    src="/images/logo.jpg.webp"
+                    alt="Sonargaon Tourism"
+                    class="w-20 h-20 object-contain rounded-md shadow-md"
+                  />
+                  <img
+                    src="images/logo pertner.PNG"
+                    alt="M4RD"
+                    class="w-20 h-20 object-contain rounded-md shadow-md"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+      <!-- 🌅 MV Tangua Haor & Sundarban Attractions Gallery -->
+    <section class="bg-gradient-to-b from-blue-50 to-white py-16">
+        <div class="max-w-7xl mx-auto px-6">
+          <!-- 🟦 Section Title -->
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-blue-800 mb-3">
+              Discover the Charm of Tangua Haor & Sundarban
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-base">
+              A visual journey through the serene waters, luxury experiences,
+              and breathtaking nature of the Haor and Sundarban — where MV
+              Tangura Haor brings adventure and peace together.
+            </p>
+          </div>
+
+          <!-- 🌊 Section 1: MV Tangura Haor -->
+          <h3 class="text-2xl font-bold text-purple-700 mb-6 text-center">
+            MV Tangura Haor Cruise
+          </h3>
+          <div class="relative w-full max-w-7xl mx-auto">
+            <!-- Left Arrow -->
+            <button
+              id="prevHaor"
+              class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10"
+            >
+              ‹
+            </button>
+
+            <!-- Scrollable container -->
+            <div
+              id="haorSlider"
+              class="flex overflow-x-auto scrollbar-hide space-x-6 scroll-smooth py-6"
+            >
+              <!-- Cards -->
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/Cabin/hero3.png" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  Deck View
+                </div>
+              </div>
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/Cabin/mvth66.jpg" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  Luxury Lounge
+                </div>
+              </div>
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/Cabin/1.png" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  Cabin Interior
+                </div>
+              </div>
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/Cabin/2.png" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  Luxury Bedroom
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button
+              id="nextHaor"
+              class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10"
+            >
+              ›
+            </button>
+
+            <!-- Progress bar -->
+            <div class="w-full bg-gray-200 h-2 mt-4 rounded-full">
+              <div
+                id="progressHaor"
+                class="bg-blue-700 h-2 rounded-full w-0"
+              ></div>
+            </div>
+          </div>
+
+          <!-- 🌴 Section 2: Nature & Haor Views -->
+          <h3
+            class="text-2xl font-bold text-emerald-700 mb-6 text-center mt-16"
+          >
+            Haor & Nature Views
+          </h3>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12"
+          >
+            <img
+              src="/images/68.jpg"
+              class="rounded-xl shadow-md w-full h-48 object-cover"
+            />
+            <img
+              src="/images/998.jpg"
+              class="rounded-xl shadow-md w-full h-48 object-cover"
+            />
+            <img
+              src="/images/996.jpg"
+              class="rounded-xl shadow-md w-full h-48 object-cover"
+            />
+            <img
+              src="/images/7.jpg"
+              class="rounded-xl shadow-md w-full h-48 object-cover"
+            />
+            <img
+              src="/images/8.jpg"
+              class="rounded-xl shadow-md w-full h-48 object-cover"
+            />
+          </div>
+
+          <!-- 🐅 Section 3: Sundarban Adventure -->
+          <h3 class="text-2xl font-bold text-amber-700 mb-6 text-center">
+            Sundarban Adventure
+          </h3>
+          <div class="relative w-full max-w-7xl mx-auto">
+            <!-- Left Arrow -->
+            <button
+              id="prevSundarban"
+              class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10"
+            >
+              ‹
+            </button>
+
+            <!-- Scrollable container -->
+            <div
+              id="sundarbanSlider"
+              class="flex overflow-x-auto scrollbar-hide space-x-6 scroll-smooth py-6"
+            >
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/images/56.jpeg" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  লাকমা ছড়া
+                </div>
+              </div>
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/images/59.jpg" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  জাদুকাটা নদী
+                </div>
+              </div>
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/images/57.jpg" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  ওয়াচ টাওয়ার
+                </div>
+              </div>
+              <div
+                class="relative flex-shrink-0 w-72 rounded-xl shadow-lg overflow-hidden"
+              >
+                <img src="/images/60.jpg" class="w-full h-52 object-cover" />
+                <div
+                  class="absolute bottom-0 bg-black/50 w-full text-white text-center py-2 text-sm"
+                >
+                  শিমুল বাগান
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button
+              id="nextSundarban"
+              class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded z-10"
+            >
+              ›
+            </button>
+
+            <!-- Progress bar -->
+            <div class="w-full bg-gray-200 h-2 mt-4 rounded-full">
+              <div
+                id="progressSundarban"
+                class="bg-amber-600 h-2 rounded-full w-0"
+              ></div>
+            </div>
+          </div>
+
+          <!-- 📜 Section Footer -->
+          <div class="text-center mt-12">
+            <p class="text-gray-600 italic">
+              *All images captured from MV Tangura Haor journeys. Actual
+              experience may vary with season and weather conditions.*
+            </p>
+            <button
+              class="mt-4 px-6 py-2 bg-blue-700 text-white rounded-full shadow hover:bg-blue-800 transition"
+            >
+              Book Your Adventure
+            </button>
+          </div>
+        </div>
+    </section>
+
+    <!-- 🌅 Featured Sundarban Package Highlight with Lightbox -->
+    <section class="relative bg-gradient-to-b from-white to-blue-50 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-extrabold text-amber-700 text-center mb-8">
+        Experience of the Sundarban
+        </h2>
+
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer" onclick="openLightbox()">
+        <!-- Main Image -->
+        <img
+            src="/images/Sundarban package-03.jpg"
+            alt="Sundarban Cruise Adventure"
+            class="w-full h-[500px] object-cover transform group-hover:scale-110 transition duration-700"
+        />
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-90"></div>
+
+        <!-- Text Content -->
+        <div class="absolute bottom-0 left-0 w-full p-8 text-white">
+            <h3 class="text-3xl font-bold mb-2 drop-shadow-lg">Sundarban Explorer Cruise</h3>
+            <p class="text-base max-w-2xl mb-4 leading-relaxed opacity-90">
+            Embark on a 3-day luxury journey through the world’s largest mangrove forest. Enjoy guided wildlife tours, onboard dining, and stunning river sunsets aboard the MV Tangua Haor.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+            <span class="bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm">3 Days / 2 Nights</span>
+            <span class="bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm">All-Inclusive Meals</span>
+            <span class="bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm">Forest Permit Included</span>
+            </div>
+
+            <button
+            class="mt-6 px-6 py-2 bg-amber-600 hover:bg-amber-700 rounded-full shadow-lg transition duration-300"
+            >
+            Book This Package
+            </button>
+        </div>
+
+        <!-- Decorative Border Glow -->
+        <div class="absolute inset-0 border-4 border-transparent group-hover:border-amber-400 rounded-3xl transition duration-500"></div>
+        </div>
+        <!-- 📅 Trip Schedule Table -->
+            <!-- 📅 Trip Schedule Table -->
+        <div class="mt-12 bg-white shadow-lg rounded-2xl overflow-hidden">
+        <h3 class="text-2xl font-semibold text-center text-amber-700 py-4 bg-blue-50">
+            Upcoming Trip Schedule (Oct 2025 – Feb 2026)
+        </h3>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-center border-collapse">
+            <thead class="bg-amber-600 text-white">
+                <tr>
+                <th class="p-3">Month</th>
+                <th class="p-3">Trip Dates</th>
+                <th class="p-3">Duration</th>
+                <th class="p-3">Package Type</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-800">
+                <tr class="border-b hover:bg-blue-50">
+                <td class="p-3 font-medium">October 2025</td>
+                <td class="p-3">30 – 2</td>
+                <td class="p-3">3 Days / 2 Nights</td>
+                <td class="p-3">Luxury Cruise</td>
+                </tr>
+                <tr class="border-b hover:bg-blue-50">
+                <td class="p-3 font-medium">November 2025</td>
+                <td class="p-3">3–6, 7–9, 10–13, 14–16, 17-20, 21-23, 24-26, 28-30</td>
+                <td class="p-3">3 Days / 2 Nights</td>
+                <td class="p-3">Standard & First Class</td>
+                </tr>
+                <tr class="border-b hover:bg-blue-50">
+                <td class="p-3 font-medium">December 2025</td>
+                <td class="p-3">1–4, 5–7, 8–11, 12–14, 16–18, 19–21, 22–24, 25–27, 30–1</td>
+                <td class="p-3">3 Days / 2 Nights</td>
+                <td class="p-3">Special Holiday Cruise</td>
+                </tr>
+                <tr class="border-b hover:bg-blue-50">
+                <td class="p-3 font-medium">January 2026</td>
+                <td class="p-3">2–4, 5–8, 9–11, 12–15, 16–18, 19-22, 23-25, 26-29, 30-1</td>
+                <td class="p-3">3 Days / 2 Nights</td>
+                <td class="p-3">New Year Package</td>
+                </tr>
+                <tr class="border-b hover:bg-blue-50">
+                <td class="p-3 font-medium">February 2026</td>
+                <td class="p-3">2–5, 6–8, 9-12, 13-15</td>
+                <td class="p-3">3 Days / 2 Nights</td>
+                <td class="p-3">Spring Cruise</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="p-6 bg-blue-50 text-center">
+            <p class="text-lg font-medium text-gray-700">
+            Popular Packages: <span class="text-amber-600 font-semibold">20,000৳ (Second Floor)</span> |
+            <span class="text-amber-600 font-semibold">18,000৳ (First Floor)</span>
+            </p>
+        </div>
+        </div>
+    </div>
+
+    <!-- 🌌 Lightbox Modal -->
+    <div
+        id="lightbox"
+        class="fixed inset-0 bg-black/90 hidden justify-center items-center z-50"
+        onclick="closeLightbox()"
+    >
+        <img
+        src="/images/Sundarban package-03.jpg"
+        alt="Sundarban Full View"
+        class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl animate-fadeIn"
+        />
+        <button
+        class="absolute top-6 right-8 text-white text-3xl font-bold hover:text-amber-400"
+        onclick="closeLightbox()"
+        >
+        &times;
+        </button>
+    </div>
+    </section>
+
+      <!-- travel confirm -->
+    <section>
+        <div>
+          <!-- Travel Confirmation Form -->
+          <div
+            class="bg-white shadow-xl rounded-2xl p-6 sm:p-8 border border-gray-100 mt-6"
+          >
+            <form id="travelForm">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="block text-gray-700 font-semibold mb-2"
+                    id="label-name"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    placeholder="Enter your name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    class="block text-gray-700 font-semibold mb-2"
+                    id="label-destination"
+                    >Destination</label
+                  >
+                  <input
+                    type="text"
+                    id="destination"
+                    required
+                    placeholder="e.g. Cox’s Bazar"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    class="block text-gray-700 font-semibold mb-2"
+                    id="label-date"
+                    >Travel Date</label
+                  >
+                  <input
+                    type="date"
+                    id="date"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    class="block text-gray-700 font-semibold mb-2"
+                    id="label-package"
+                    >Package Type</label
+                  >
+                  <select
+                    id="package"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  >
+                    <option value="">Select a package</option>
+                    <option>Sea Cruise Premium</option>
+                    <option>Luxury Cabin</option>
+                    <option>Group Tour</option>
+                    <option>Custom Trip</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mt-6 text-center">
+                <button
+                  type="submit"
+                  id="confirmBtn"
+                  class="bg-[--brand] text-white px-10 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-blue-800"
+                >
+                  ✅ Confirm
+                </button>
+              </div>
+
+              <div
+                id="successAlert"
+                class="hidden mt-4 text-center bg-green-100 text-green-800 font-semibold py-3 rounded-full animate__animated animate__fadeIn"
+              >
+                ✔️ Your booking details are being sent to WhatsApp...
+              </div>
+            </form>
+          </div>
+          <!-- language card -->
+          <div
+            class="max-w-md mx-auto mt-6 rounded-xl overflow-hidden shadow-2xl bg-white"
+          >
+            <div
+              class="p-4 bg-gray-100 flex justify-center space-x-4 border-b border-gray-200 flex-wrap"
+            >
+              <button
+                onclick="showLanguage('en')"
+                id="btn-en"
+                class="px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 bg-[--brand] text-white"
+              >
+                English
+              </button>
+              <button
+                onclick="showLanguage('bn')"
+                id="btn-bn"
+                class="px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 text-gray-700 bg-white border border-gray-300"
+              >
+                বাংলা
+              </button>
+            </div>
+
+            <div
+              id="content-en"
+              class="language-content text-center p-6 sm:p-8"
+            >
+              <h2 class="text-2xl font-bold text-[--brand] mb-3">
+                🎫 Travel Pass Confirmed!
+              </h2>
+              <p class="text-gray-700 leading-relaxed">
+                Your
+                <strong class="text-[--brand]">Travel Pass</strong> will be sent
+                via <strong class="text-green-600">Email/WhatsApp</strong>.
+                Please
+                <span class="font-semibold text-red-600">do not share</span>
+                it and
+                <span class="font-semibold text-gray-800"
+                  >bring a printed copy</span
+                >
+                for boarding.
+              </p>
+              <p class="mt-4 text-sm italic text-gray-500">
+                Have a safe and pleasant journey!
+              </p>
+            </div>
+
+            <div
+              id="content-bn"
+              class="language-content hidden text-center p-6 sm:p-8"
+            >
+              <h2 class="text-2xl font-bold text-[--brand] mb-3">
+                🎫 ট্রাভেল পাস নিশ্চিত!
+              </h2>
+              <p class="text-gray-700 leading-relaxed">
+                আপনার
+                <strong class="text-[--brand]">ট্রাভেল পাস</strong> খুব শীঘ্রই
+                <strong class="text-green-600">ইমেল/হোয়াটসঅ্যাপে</strong>
+                পাঠানো হবে। অনুগ্রহ করে এটি
+                <span class="font-semibold text-red-600"
+                  >কারও সাথে শেয়ার করবেন না</span
+                >
+                এবং
+                <span class="font-semibold text-gray-800">প্রিন্ট কপি</span>
+                সঙ্গে আনুন।
+              </p>
+              <p class="mt-4 text-sm italic text-gray-500">
+                আপনার যাত্রা শুভ হোক!
+              </p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+      <!-- Map -->
+    <section class="bg-gradient-to-r rounded-2xl mt-6 p-6">
+        <div class="max-w-5xl mx-auto lg:px-10">
+          <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+            <div
+              class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between"
+            >
+              <a
+                href="https://www.google.com/maps?q=VIP+Jetty,+Dhaka+-+Narayanganj+Hwy,+Pagla+Jetty,+Fatullah+1421"
+                target="_blank"
+                class="inline-flex items-center bg-[--brand] text-white px-5 py-3 rounded-lg font-semibold shadow hover:bg-[#2e1a7a] transition duration-300"
+              >
+                <i class="fa-solid fa-map-location-dot mr-2"></i> View on Google
+                Maps
+              </a>
+            </div>
+
+            <div class="mt-8 rounded-xl overflow-hidden shadow-md">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.3864312864665!2d90.50214277484656!3d23.871434584261107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b10e5cfcceef%3A0xe56402e4ed3f2c5a!2sVIP%20Jetty%20Ghat%2C%20Pagla%2C%20Narayanganj!5e0!3m2!1sen!2sbd!4v1692028712025!5m2!1sen!2sbd"
+                width="100%"
+                height="350"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+</main>
+
+    <!-- Footer -->
+<footer class="bg-white text-gray-800 py-10 px-6">
+      <div
+        class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-8"
+      >
+        <div class="flex-1 flex justify-center md:justify-start mb-6 md:mb-0">
+          <p class="text-lg font-bold uppercase tracking-wider text-black">
+            Sonargaon Tourism
+          </p>
+        </div>
+
+        <div class="flex-1 flex justify-center mb-6 md:mb-0">
+          <a href="https://sonargaontourism.com/"
+            ><img
+              src="/images/logo.jpg.webp"
+              alt="Sonargaon Tourism Logo"
+              class="w-32 md:w-40 object-contain"
+          /></a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center md:items-end space-y-4">
+          <div
+            class="flex space-x-4 text-xl justify-center md:justify-end w-full"
+          >
+            <a
+              href="https://www.facebook.com/sonargaontourismcompany/"
+              class="text-black hover:bg-blue-700 bg-black/10 hover:bg-black p-2 rounded-full transition-all duration-300"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/@sonargaontourism"
+              class="text-black hover:text-white bg-black/10 hover:bg-red-600 p-2 rounded-full transition-all duration-300"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/company/sonargaon-tourism/"
+              class="text-black hover:text-white bg-black/10 hover:bg-blue-700 p-2 rounded-full transition-all duration-300"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+
+          <div class="fixed bottom-8 right-6 z-50 flex items-center gap-4">
+            <button
+              class="bg-yellow-400 hover:bg-yellow-300 text-[--brand] font-bold px-6 py-2 rounded-full"
+            >
+              Contact Us
+            </button>
+
+            <a
+              href="https://m.me/197083386826131"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-white text-[#0084FF] text-2xl p-4 rounded-full shadow-lg hover:bg-[#0084FF] hover:text-white transition-all duration-300 flex items-center justify-center relative"
+            >
+              <i class="fab fa-facebook-messenger"></i>
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full animate-pulse"
+                >1</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="border-t border-gray-300 mt-6 py-4 text-center text-gray-500 text-xs"
+      >
+        &copy; 2025 LCT KAJAL. All Rights Reserved. Designed by ❤️ Sonargaon
+        Tourism Team.
+      </div>
+</footer>
+
+    <!-- Lightbox for featured package -->
+    <div
+      id="featuredLightbox"
+      class="fixed inset-0 bg-black/90 hidden z-50 items-center justify-center p-6"
+    >
+      <div class="relative max-w-[90vw] max-h-[90vh]">
+        <button
+          id="featuredClose"
+          class="absolute -top-6 -right-6 text-white text-3xl"
+        >
+          &times;
+        </button>
+        <img
+          src="/images/Sundarban package-03.jpg"
+          class="rounded-lg"
+          alt="Featured full"
+        />
+      </div>
+    </div>
+
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+    <!-- SCRIPT: functionality & fixes -->
+    <script>
+      //hour gallery slider
+      function initSlider(prevId, nextId, sliderId, progressId) {
+        const prev = document.getElementById(prevId)
+        const next = document.getElementById(nextId)
+        const slider = document.getElementById(sliderId)
+        const progress = document.getElementById(progressId)
+
+        function updateProgress() {
+          const maxScroll = slider.scrollWidth - slider.clientWidth
+          const scrollPercent = (slider.scrollLeft / maxScroll) * 100
+          progress.style.width = scrollPercent + '%'
+        }
+
+        next.addEventListener('click', () => {
+          slider.scrollBy({ left: 300, behavior: 'smooth' })
+        })
+        prev.addEventListener('click', () => {
+          slider.scrollBy({ left: -300, behavior: 'smooth' })
+        })
+        slider.addEventListener('scroll', updateProgress)
+      }
+
+      // Initialize both sliders
+      initSlider('prevHaor', 'nextHaor', 'haorSlider', 'progressHaor')
+      initSlider(
+        'prevSundarban',
+        'nextSundarban',
+        'sundarbanSlider',
+        'progressSundarban'
+      )
+
+      // --- config ---
+      const WHATSAPP_NUMBER = '8801901378925' // use without '+' sign
+      const defaultLang = 'en'
+
+      // --- translations for the elements we change ---
+      const translations = {
+        en: {
+          hotDeals: 'Hot Deals',
+          bookingProcess: 'Booking Process',
+          confirmTitle: 'Travel Confirmation',
+          labelName: 'Full Name',
+          labelDestination: 'Destination',
+          labelDate: 'Travel Date',
+          labelPackage: 'Package Type',
+          confirmBtn: '✅ Confirm',
+          langCardTitle: '🎫 Travel Pass Confirmed!',
+          langCardBody:
+            'Your Travel Pass will be sent via Email/WhatsApp. Please do not share it and bring a printed copy for boarding.',
+          successAlert: '✔️ Your booking details are being sent to WhatsApp...',
+          missingFields: 'Please fill all fields.',
+        },
+        bn: {
+          hotDeals: 'হট ডিলস',
+          bookingProcess: 'বুকিং প্রক্রিয়া',
+          confirmTitle: 'ট্রাভেল কনফার্মেশন',
+          labelName: 'পূর্ণ নাম',
+          labelDestination: 'গন্তব্য',
+          labelDate: 'ভ্রমণের তারিখ',
+          labelPackage: 'প্যাকেজ টাইপ',
+          confirmBtn: '✅ নিশ্চিত করুন',
+          langCardTitle: '🎫 ট্রাভেল পাস নিশ্চিত!',
+          langCardBody:
+            'আপনার ট্রাভেল পাস ইমেল/হোয়াটসঅ্যাপে পাঠানো হবে। অনুগ্রহ করে এটি কারো সাথে শেয়ার করবেন না এবং প্রিন্ট কপি নিয়ে আসুন।',
+          successAlert: '✔️ হোয়াটসঅ্যাপে পাঠানো হচ্ছে...',
+          missingFields: 'অনুগ্রহ করে সকল তথ্য পূরণ করুন।',
+        },
+      }
+
+      // seat plans inline (so no external JSON needed)
+      const seatPlans = [
+        {
+          class: 'Second Floor (Luxury)',
+          quantity: '20 cabins',
+          details: 'AC cabins, private balcony',
+          one_way_price: '20,000৳',
+          round_trip_price: '35,000৳',
+          book_now_link:
+            'https://sonargaontourism.com/product/mv-tangura-haor-cruise/',
+          messenger_link: 'https://m.me/197083386826131',
+          image_url: '/images/MV tangura (1).png',
+        },
+        {
+          class: 'First Floor (Luxury)',
+          quantity: '30 cabins',
+          details: 'AC, spacious beds',
+          one_way_price: '18,000৳',
+          round_trip_price: '33,000৳',
+          book_now_link:
+            'https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/',
+          messenger_link: 'https://m.me/197083386826131',
+          image_url: '/images/MV tangura (4).png',
+        },
+      ]
+
+      // --- DOM refs ---
+      const menuBtn = document.getElementById('menu-btn')
+      const sidebar = document.getElementById('sidebar')
+      const overlay = document.getElementById('overlay')
+      const closeBtn = document.getElementById('close-btn')
+      const mobileMenu = document.getElementById('mobile-menu')
+
+      // hero rotating word
+      const dynamicWord = document.getElementById('dynamic-word')
+      const words = ['Ships', 'Hotel', 'Restaurant']
+      let wIndex = 0
+
+      // sliders
+      const gallerySlider = document.getElementById('gallery-slider')
+      const prevGallery = document.getElementById('prev-gallery')
+      const nextGallery = document.getElementById('next-gallery')
+
+      // featured lightbox
+      const featuredPkg = document.getElementById('featured-package')
+      const featuredLightbox = document.getElementById('featuredLightbox')
+      const featuredClose = document.getElementById('featuredClose')
+      const lightboxModal = document.getElementById('lightbox')
+      const closeLightbox = document.getElementById('closeLightbox')
+
+      // seat plan container
+      const seatPlanContainer = document.getElementById('seatPlanContainer')
+
+      // language elements
+      const btnEn = document.getElementById('btn-en')
+      const btnBn = document.getElementById('btn-bn')
+      const contentEn = document.getElementById('content-en')
+      const contentBn = document.getElementById('content-bn')
+
+      // text elements
+      const hotdealsTitle = document.getElementById('hotdeals-title')
+      const bookingTitle = document.getElementById('booking-title')
+      const labelName = document.getElementById('label-name')
+      const labelDestination = document.getElementById('label-destination')
+      const labelDate = document.getElementById('label-date')
+      const labelPackage = document.getElementById('label-package')
+      const confirmBtn = document.getElementById('confirmBtn')
+      const successAlert = document.getElementById('successAlert')
+
+      // form refs
+      const travelForm = document.getElementById('travelForm')
+
+      // featured package booking button
+      const bookPackageBtn = document.getElementById('bookPackage')
+
+      // --- functionality ---
+
+      // Sidebar open/close
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full')
+        overlay.classList.remove('hidden')
+      })
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full')
+        overlay.classList.add('hidden')
+      })
+      overlay.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full')
+        overlay.classList.add('hidden')
+        mobileMenu.classList.add('hidden')
+      })
+
+      // mobile menu toggle
+      menuBtn.addEventListener('dblclick', () => {
+        // double click: open mobile menu (fallback)
+        mobileMenu.classList.toggle('hidden')
+      })
+
+      // rotate hero word
+      setInterval(() => {
+        wIndex = (wIndex + 1) % words.length
+        if (dynamicWord) dynamicWord.textContent = words[wIndex]
+      }, 4000)
+
+      // gallery left/right
+      const SCROLL_AMOUNT = 320
+      prevGallery?.addEventListener('click', () =>
+        gallerySlider.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' })
+      )
+      nextGallery?.addEventListener('click', () =>
+        gallerySlider.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' })
+      )
+
+      // featured package -> open lightbox
+      featuredPkg?.addEventListener('click', () => {
+        featuredLightbox.classList.remove('hidden')
+        featuredLightbox.classList.add('flex')
+      })
+      featuredClose?.addEventListener('click', () => {
+        featuredLightbox.classList.remove('flex')
+        featuredLightbox.classList.add('hidden')
+      })
+      featuredLightbox?.addEventListener('click', (e) => {
+        if (e.target === featuredLightbox) {
+          featuredLightbox.classList.remove('flex')
+          featuredLightbox.classList.add('hidden')
+        }
+      })
+
+      // small lightbox close
+      closeLightbox?.addEventListener('click', () => {
+        lightboxModal.style.display = 'none'
+      })
+      lightboxModal?.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) lightboxModal.style.display = 'none'
+      })
+
+      // Build seat plan cards
+      function buildSeatPlanCards() {
+        seatPlanContainer.innerHTML = ''
+        seatPlans.forEach((plan) => {
+          const wrapper = document.createElement('div')
+          wrapper.className =
+            'bg-white shadow-xl rounded-2xl overflow-hidden max-w-4xl mx-auto flex flex-col md:flex-row'
+          wrapper.innerHTML = `
+          <figure class="flex-shrink-0 w-full md:w-80">
+            <a href="${plan.book_now_link}" target="_blank">
+              <img class="w-full h-48 sm:h-52 md:h-52 object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none" src="${
+                plan.image_url
+              }" alt="${plan.class}" />
+            </a>
+          </figure>
+          <div class="card-body text-white bg-gradient-to-r from-[#0E0F2C] to-[--brand] justify-between flex-1 p-4 sm:p-6 md:p-6 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <a href="${plan.book_now_link}" target="_blank" class="flex-1">
+                <div>
+                  <h2 class="card-title text-lg font-bold">${plan.class}</h2>
+                  <p class="text-sm text-gray-200">${plan.quantity}</p>
+                  ${
+                    plan.details
+                      ? `<p style="font-size: .875rem; color: #e5e7eb; margin-top:.25rem;">${plan.details}</p>`
+                      : ''
+                  }
+                </div>
+              </a>
+              <a href="${plan.book_now_link}" class="block w-full md:w-auto">
+                <div class="text-left sm:text-left md:text-right">
+                  <div class="flex flex-col sm:flex-row md:justify-end justify-start md:items-end items-start gap-6">
+                    <div class="text-left md:text-right">
+                      <h2 class="text-2xl font-bold text-white">${
+                        plan.one_way_price
+                      }</h2>
+                      <p class="text-lg text-white">One Way</p>
+                    </div>
+                    <div class="text-left md:text-right">
+                      <h2 class="text-2xl font-bold text-white">${
+                        plan.round_trip_price
+                      }</h2>
+                      <p class="text-lg text-white">Round Trip</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+              <a href="${
+                plan.book_now_link
+              }" target="_blank"><button class="btn btn-warning px-6 rounded-3xl font-semibold w-full sm:w-auto">Book Now</button></a>
+              <a href="${
+                plan.messenger_link
+              }" target="_blank"><button class="btn btn-outline btn-warning rounded-3xl px-6 font-semibold w-full sm:w-auto">Messenger</button></a>
+            </div>
+          </div>
+        `
+          seatPlanContainer.appendChild(wrapper)
+        })
+      }
+
+      // Language toggler: updates labels and language-specific card
+      function showLanguage(lang) {
+        const t = translations[lang] || translations.en
+
+        // headings
+        if (hotdealsTitle) hotdealsTitle.textContent = t.hotDeals
+        if (bookingTitle) bookingTitle.textContent = t.bookingProcess
+
+        // form labels
+        if (labelName) labelName.textContent = t.labelName
+        if (labelDestination) labelDestination.textContent = t.labelDestination
+        if (labelDate) labelDate.textContent = t.labelDate
+        if (labelPackage) labelPackage.textContent = t.labelPackage
+
+        // confirm button text
+        if (confirmBtn) confirmBtn.textContent = t.confirmBtn
+
+        // success alert
+        if (successAlert) successAlert.textContent = t.successAlert
+
+        // language card toggle
+        if (lang === 'en') {
+          contentEn.classList.remove('hidden')
+          contentBn.classList.add('hidden')
+          btnEn.classList.add('bg-[--brand]', 'text-white')
+          btnEn.classList.remove('bg-white', 'text-gray-700')
+          btnBn.classList.remove('bg-[--brand]', 'text-white')
+          btnBn.classList.add('bg-white', 'text-gray-700')
+        } else {
+          contentEn.classList.add('hidden')
+          contentBn.classList.remove('hidden')
+          btnBn.classList.add('bg-[--brand]', 'text-white')
+          btnBn.classList.remove('bg-white', 'text-gray-700')
+          btnEn.classList.remove('bg-[--brand]', 'text-white')
+          btnEn.classList.add('bg-white', 'text-gray-700')
+        }
+      }
+
+      // Attach language handlers (buttons already have onclick in HTML too)
+      if (btnEn) btnEn.addEventListener('click', () => showLanguage('en'))
+      if (btnBn) btnBn.addEventListener('click', () => showLanguage('bn'))
+
+      // Confirm form -> WhatsApp
+      travelForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const name = document.getElementById('name').value.trim()
+        const destination = document.getElementById('destination').value.trim()
+        const date = document.getElementById('date').value
+        const packageType = document.getElementById('package').value.trim()
+
+        // choose language for error messages (based on btnEn active state)
+        const activeLang = !btnEn.classList.contains('bg-white') ? 'en' : 'bn'
+        const t = translations[activeLang]
+
+        if (!name || !destination || !date || !packageType) {
+          alert(t.missingFields)
+          return
+        }
+
+        // Build message in the selected language
+        let message = ''
+        if (activeLang === 'en') {
+          message = `🌍 Travel Confirmation Request\n\n👤 Name: ${name}\n📍 Destination: ${destination}\n📅 Date: ${date}\n🛳 Package: ${packageType}\n\nPlease confirm my booking.`
+        } else {
+          message = `🌍 ট্রাভেল কনফার্মেশন রিকোয়েস্ট\n\n👤 নাম: ${name}\n📍 গন্তব্য: ${destination}\n📅 তারিখ: ${date}\n🛳 প্যাকেজ: ${packageType}\n\nঅনুগ্রহ করে আমার বুকিং নিশ্চিত করুন।`
+        }
+
+        // show alert then open WhatsApp
+        if (successAlert) {
+          successAlert.textContent = t.successAlert
+          successAlert.classList.remove('hidden')
+        }
+        const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+          message
+        )}`
+
+        // open immediately (short timeout to let user see alert)
+        setTimeout(() => {
+          window.open(waUrl, '_blank')
+          if (successAlert) successAlert.classList.add('hidden')
+          travelForm.reset()
+        }, 700)
+      })
+
+      // Book package button also opens the booking form prefilled (or opens WhatsApp directly)
+      bookPackageBtn?.addEventListener('click', () => {
+        // jump to form area
+        document
+          .getElementById('name')
+          .scrollIntoView({ behavior: 'smooth', block: 'center' })
+        // optional: you could prefill fields or open a modal; here we focus the name field
+        setTimeout(() => document.getElementById('name').focus(), 600)
+      })
+
+      // build seat plan initial
+      buildSeatPlanCards()
+
+      // initialize language default
+      showLanguage(defaultLang)
+
+      // small defenders for missing elements to avoid errors
+      window.addEventListener('error', () => {
+        /* ignore non-critical runtime errors in this environment */
+      })
+    </script>
+  </body>
+</html>
