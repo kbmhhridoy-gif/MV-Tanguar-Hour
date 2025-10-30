@@ -25,102 +25,152 @@
     />
 
     <style>
-         /* ✅ Fix for Navbar Overlap on All Devices (Next Hub, Hub Max, etc.) */
+  /* ✅ Fix for Navbar Overlap on All Devices */
+  header {
+    padding-top: 70px; /* adjust if your navbar is taller */
+  }
+
+  /* For larger smart displays like Nest Hub Max */
+  @media (min-width: 924px) {
     header {
-      padding-top: 70px;
-      /* adjust if your navbar is taller */
+      padding-top: 50px;
     }
+  }
 
-    /* For larger smart displays like Nest Hub Max */
-    @media (min-width: 924px) {
-      header {
-        padding-top: 50px;
-      }
+  /* For smaller smart displays / tablets */
+  @media (max-width: 668px) {
+    header {
+      padding-top: 60px;
     }
+  }
 
-    /* For smaller smart displays / tablets */
-    @media (max-width: 668px) {
-      header {
-        padding-top: 60px;
-      }
+  /* 🎨 Global Theme */
+  :root {
+    --brand: #2e3192;
+    --accent: #00bcd4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Lato', system-ui, -apple-system, sans-serif;
+  }
+
+  /* 🌊 HERO SECTION STYLE */
+  .hero-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #f8fafc, #eef2ff);
+    padding: 6rem 1rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--brand);
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    color: #4b5563;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-top: 1rem;
+  }
+
+  /* ✨ HERO DYNAMIC WORD ANIMATION */
+  @keyframes fadeWord {
+    0% {
+      opacity: 0;
+      transform: translateY(20%);
     }
+    25% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    75% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+  }
 
+  .fade-word {
+    display: inline-block;
+    color: var(--accent);
+    animation: fadeWord 3s ease-in-out infinite;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
 
+  /* 🖼️ LOGO SCROLLER */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 
-      :root {
-        --brand: #2e3192;
-        --accent: #00bcd4;
-      }
-      html {
-        scroll-behavior: smooth;
-        font-family: 'Lato', system-ui, -apple-system, sans-serif;
-      }
-      header {
-        padding-top: 70px;
-      } /* fix navbar overlap */
-      /* animated word */
-      @keyframes slideWord {
-        0% {
-          opacity: 0;
-          transform: translateY(20%);
-        }
-        10% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-          transform: translateY(-20%);
-        }
-      }
-      .slide-anim {
-        animation: slideWord 4s ease-in-out infinite;
-        display: inline-block;
-      }
-      /* logos scroll */
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-      .animate-scroll {
-        display: flex;
-        width: max-content;
-        animation: scroll 20s linear infinite;
-        gap: 1.5rem;
-      }
-      .animate-scroll:hover {
-        animation-play-state: paused;
-      }
-      /* hide scrollbars */
-      .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-      }
-      .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      /* lightbox */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: scale(0.98);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-      .animate-fadeIn {
-        animation: fadeIn 0.28s ease-in-out;
-      }
-    </style>
+  .animate-scroll {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+    gap: 1.5rem;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* 🙈 Hide Scrollbars */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* 💡 Lightbox Fade-In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.28s ease-in-out;
+  }
+
+  /* 📱 Responsive Fixes */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 4rem 1rem;
+    }
+    .hero-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 1.8rem;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
 
 
   </head>
@@ -216,13 +266,13 @@
 
   <!-- Overlay (click to close sidebar) -->
   <div id="overlay"
-    class="fixed inset-0 bg-black bg-opacity-40 hidden z-30 transition-opacity duration-300 ease-in-out"></div>
+    class="fixed inset-0 hidden z-30 transition-opacity duration-300 ease-in-out"></div>
 
 
     <!-- HERO -->
     <header class="relative text-white rounded-md overflow-hidden">
       <div
-        class="hero bg-cover bg-center bg-no-repeat flex flex-col w-full justify-start items-start h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[80vh]"
+        class="hero  flex flex-col w-full justify-start items-start h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[80vh]"
         style="
           background-image: linear-gradient(
               to bottom,
@@ -232,7 +282,7 @@
             url('/images/tangura\ haor\ sundarban.jpg');
         "
       >
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0"></div>
 
         <div
           class="absolute top-16 mt-16 left-0 right-0 flex justify-center items-center px-4"
@@ -275,6 +325,9 @@
         </div>
       </div>
     </header>
+
+
+    
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
@@ -1260,378 +1313,331 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 
     <!-- SCRIPT: functionality & fixes -->
-    <script>
-      //hour gallery slider
-      function initSlider(prevId, nextId, sliderId, progressId) {
-        const prev = document.getElementById(prevId)
-        const next = document.getElementById(nextId)
-        const slider = document.getElementById(sliderId)
-        const progress = document.getElementById(progressId)
+  <script>
+  // ---------------- HERO DYNAMIC WORD ----------------
+  const dynamicWord = document.getElementById("dynamic-word");
+  const words = [ "Ship", "Hotel", "Restaurant", ];
+  let wIndex = 0;
 
-        function updateProgress() {
-          const maxScroll = slider.scrollWidth - slider.clientWidth
-          const scrollPercent = (slider.scrollLeft / maxScroll) * 100
-          progress.style.width = scrollPercent + '%'
-        }
+  function rotateHeroWord() {
+    if (!dynamicWord) return;
+    dynamicWord.classList.add("opacity-0", "translate-y-2");
+    setTimeout(() => {
+      wIndex = (wIndex + 1) % words.length;
+      dynamicWord.textContent = words[wIndex];
+      dynamicWord.classList.remove("opacity-0", "translate-y-2");
+    }, 400);
+  }
+  setInterval(rotateHeroWord, 3000);
 
-        next.addEventListener('click', () => {
-          slider.scrollBy({ left: 300, behavior: 'smooth' })
-        })
-        prev.addEventListener('click', () => {
-          slider.scrollBy({ left: -300, behavior: 'smooth' })
-        })
-        slider.addEventListener('scroll', updateProgress)
-      }
+  // ---------------- SLIDER FUNCTION ----------------
+  function initSlider(prevId, nextId, sliderId, progressId) {
+    const prev = document.getElementById(prevId);
+    const next = document.getElementById(nextId);
+    const slider = document.getElementById(sliderId);
+    const progress = document.getElementById(progressId);
 
-      // Initialize both sliders
-      initSlider('prevHaor', 'nextHaor', 'haorSlider', 'progressHaor')
-      initSlider(
-        'prevSundarban',
-        'nextSundarban',
-        'sundarbanSlider',
-        'progressSundarban'
-      )
+    function updateProgress() {
+      if (!slider || !progress) return;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      const scrollPercent = (slider.scrollLeft / maxScroll) * 100;
+      progress.style.width = scrollPercent + "%";
+    }
 
-      // --- config ---
-      const WHATSAPP_NUMBER = '8801901378925' // use without '+' sign
-      const defaultLang = 'en'
+    next?.addEventListener("click", () => {
+      slider.scrollBy({ left: 300, behavior: "smooth" });
+    });
+    prev?.addEventListener("click", () => {
+      slider.scrollBy({ left: -300, behavior: "smooth" });
+    });
+    slider?.addEventListener("scroll", updateProgress);
+  }
 
-      // --- translations for the elements we change ---
-      const translations = {
-        en: {
-          hotDeals: 'Hot Deals',
-          bookingProcess: 'Booking Process',
-          confirmTitle: 'Travel Confirmation',
-          labelName: 'Full Name',
-          labelDestination: 'Destination',
-          labelDate: 'Travel Date',
-          labelPackage: 'Package Type',
-          confirmBtn: '✅ Confirm',
-          langCardTitle: '🎫 Travel Pass Confirmed!',
-          langCardBody:
-            'Your Travel Pass will be sent via Email/WhatsApp. Please do not share it and bring a printed copy for boarding.',
-          successAlert: '✔️ Your booking details are being sent to WhatsApp...',
-          missingFields: 'Please fill all fields.',
-        },
-        bn: {
-          hotDeals: 'হট ডিলস',
-          bookingProcess: 'বুকিং প্রক্রিয়া',
-          confirmTitle: 'ট্রাভেল কনফার্মেশন',
-          labelName: 'পূর্ণ নাম',
-          labelDestination: 'গন্তব্য',
-          labelDate: 'ভ্রমণের তারিখ',
-          labelPackage: 'প্যাকেজ টাইপ',
-          confirmBtn: '✅ নিশ্চিত করুন',
-          langCardTitle: '🎫 ট্রাভেল পাস নিশ্চিত!',
-          langCardBody:
-            'আপনার ট্রাভেল পাস ইমেল/হোয়াটসঅ্যাপে পাঠানো হবে। অনুগ্রহ করে এটি কারো সাথে শেয়ার করবেন না এবং প্রিন্ট কপি নিয়ে আসুন।',
-          successAlert: '✔️ হোয়াটসঅ্যাপে পাঠানো হচ্ছে...',
-          missingFields: 'অনুগ্রহ করে সকল তথ্য পূরণ করুন।',
-        },
-      }
+  // Initialize sliders
+  initSlider("prevHaor", "nextHaor", "haorSlider", "progressHaor");
+  initSlider("prevSundarban", "nextSundarban", "sundarbanSlider", "progressSundarban");
 
-      // seat plans inline (so no external JSON needed)
-      const seatPlans = [
-        {
-          class: 'Second Floor (Luxury)',
-          quantity: '20 cabins',
-          details: 'AC cabins, private balcony',
-          one_way_price: '20,000৳',
-          round_trip_price: '35,000৳',
-          book_now_link:
-            'https://sonargaontourism.com/product/mv-tangura-haor-cruise/',
-          messenger_link: 'https://m.me/197083386826131',
-          image_url: '/images/MV tangura (1).png',
-        },
-        {
-          class: 'First Floor (Luxury)',
-          quantity: '30 cabins',
-          details: 'AC, spacious beds',
-          one_way_price: '18,000৳',
-          round_trip_price: '33,000৳',
-          book_now_link:
-            'https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/',
-          messenger_link: 'https://m.me/197083386826131',
-          image_url: '/images/MV tangura (4).png',
-        },
-      ]
+  // ---------------- CONFIG ----------------
+  const WHATSAPP_NUMBER = "8801901378925"; // no '+'
+  const defaultLang = "en";
 
-      // --- DOM refs ---
-      const menuBtn = document.getElementById('menu-btn')
-      const sidebar = document.getElementById('sidebar')
-      const overlay = document.getElementById('overlay')
-      const closeBtn = document.getElementById('close-btn')
-      const mobileMenu = document.getElementById('mobile-menu')
+  // ---------------- TRANSLATIONS ----------------
+  const translations = {
+    en: {
+      hotDeals: "Hot Deals",
+      bookingProcess: "Booking Process",
+      confirmTitle: "Travel Confirmation",
+      labelName: "Full Name",
+      labelDestination: "Destination",
+      labelDate: "Travel Date",
+      labelPackage: "Package Type",
+      confirmBtn: "✅ Confirm",
+      langCardTitle: "🎫 Travel Pass Confirmed!",
+      langCardBody:
+        "Your Travel Pass will be sent via Email/WhatsApp. Please do not share it and bring a printed copy for boarding.",
+      successAlert: "✔️ Your booking details are being sent to WhatsApp...",
+      missingFields: "Please fill all fields.",
+    },
+    bn: {
+      hotDeals: "হট ডিলস",
+      bookingProcess: "বুকিং প্রক্রিয়া",
+      confirmTitle: "ট্রাভেল কনফার্মেশন",
+      labelName: "পূর্ণ নাম",
+      labelDestination: "গন্তব্য",
+      labelDate: "ভ্রমণের তারিখ",
+      labelPackage: "প্যাকেজ টাইপ",
+      confirmBtn: "✅ নিশ্চিত করুন",
+      langCardTitle: "🎫 ট্রাভেল পাস নিশ্চিত!",
+      langCardBody:
+        "আপনার ট্রাভেল পাস ইমেল/হোয়াটসঅ্যাপে পাঠানো হবে। অনুগ্রহ করে এটি কারো সাথে শেয়ার করবেন না এবং প্রিন্ট কপি নিয়ে আসুন।",
+      successAlert: "✔️ হোয়াটসঅ্যাপে পাঠানো হচ্ছে...",
+      missingFields: "অনুগ্রহ করে সকল তথ্য পূরণ করুন।",
+    },
+  };
 
-      // hero rotating word
-      const dynamicWord = document.getElementById('dynamic-word')
-      const words = ['Ships', 'Hotel', 'Restaurant']
-      let wIndex = 0
+  // ---------------- SEAT PLANS ----------------
+  const seatPlans = [
+    {
+      class: "Second Floor (Luxury)",
+      quantity: "20 cabins",
+      details: "AC cabins, private balcony",
+      one_way_price: "20,000৳",
+      round_trip_price: "35,000৳",
+      book_now_link:
+        "https://sonargaontourism.com/product/mv-tangura-haor-cruise/",
+      messenger_link: "https://m.me/197083386826131",
+      image_url: "/images/MV tangura (1).png",
+    },
+    {
+      class: "First Floor (Luxury)",
+      quantity: "30 cabins",
+      details: "AC, spacious beds",
+      one_way_price: "18,000৳",
+      round_trip_price: "33,000৳",
+      book_now_link:
+        "https://sonargaontourism.com/product/mv-tangura-haor-cruise-first-floor/",
+      messenger_link: "https://m.me/197083386826131",
+      image_url: "/images/MV tangura (4).png",
+    },
+  ];
 
-      // sliders
-      const gallerySlider = document.getElementById('gallery-slider')
-      const prevGallery = document.getElementById('prev-gallery')
-      const nextGallery = document.getElementById('next-gallery')
+  // ---------------- DOM REFERENCES ----------------
+  const menuBtn = document.getElementById("menu-btn");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("close-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-      // featured lightbox
-      const featuredPkg = document.getElementById('featured-package')
-      const featuredLightbox = document.getElementById('featuredLightbox')
-      const featuredClose = document.getElementById('featuredClose')
-      const lightboxModal = document.getElementById('lightbox')
-      const closeLightbox = document.getElementById('closeLightbox')
+  const gallerySlider = document.getElementById("gallery-slider");
+  const prevGallery = document.getElementById("prev-gallery");
+  const nextGallery = document.getElementById("next-gallery");
 
-      // seat plan container
-      const seatPlanContainer = document.getElementById('seatPlanContainer')
+  const featuredPkg = document.getElementById("featured-package");
+  const featuredLightbox = document.getElementById("featuredLightbox");
+  const featuredClose = document.getElementById("featuredClose");
+  const lightboxModal = document.getElementById("lightbox");
+  const closeLightbox = document.getElementById("closeLightbox");
 
-      // language elements
-      const btnEn = document.getElementById('btn-en')
-      const btnBn = document.getElementById('btn-bn')
-      const contentEn = document.getElementById('content-en')
-      const contentBn = document.getElementById('content-bn')
+  const seatPlanContainer = document.getElementById("seatPlanContainer");
 
-      // text elements
-      const hotdealsTitle = document.getElementById('hotdeals-title')
-      const bookingTitle = document.getElementById('booking-title')
-      const labelName = document.getElementById('label-name')
-      const labelDestination = document.getElementById('label-destination')
-      const labelDate = document.getElementById('label-date')
-      const labelPackage = document.getElementById('label-package')
-      const confirmBtn = document.getElementById('confirmBtn')
-      const successAlert = document.getElementById('successAlert')
+  const btnEn = document.getElementById("btn-en");
+  const btnBn = document.getElementById("btn-bn");
+  const contentEn = document.getElementById("content-en");
+  const contentBn = document.getElementById("content-bn");
 
-      // form refs
-      const travelForm = document.getElementById('travelForm')
+  const hotdealsTitle = document.getElementById("hotdeals-title");
+  const bookingTitle = document.getElementById("booking-title");
+  const labelName = document.getElementById("label-name");
+  const labelDestination = document.getElementById("label-destination");
+  const labelDate = document.getElementById("label-date");
+  const labelPackage = document.getElementById("label-package");
+  const confirmBtn = document.getElementById("confirmBtn");
+  const successAlert = document.getElementById("successAlert");
+  const travelForm = document.getElementById("travelForm");
+  const bookPackageBtn = document.getElementById("bookPackage");
 
-      // featured package booking button
-      const bookPackageBtn = document.getElementById('bookPackage')
+  // ---------------- SIDEBAR TOGGLE ----------------
+  menuBtn?.addEventListener("click", () => {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  });
+  closeBtn?.addEventListener("click", () => {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  });
+  overlay?.addEventListener("click", () => {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+    mobileMenu?.classList.add("hidden");
+  });
+  menuBtn?.addEventListener("dblclick", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
 
-      // --- functionality ---
+  // ---------------- GALLERY ARROWS ----------------
+  const SCROLL_AMOUNT = 320;
+  prevGallery?.addEventListener("click", () =>
+    gallerySlider.scrollBy({ left: -SCROLL_AMOUNT, behavior: "smooth" })
+  );
+  nextGallery?.addEventListener("click", () =>
+    gallerySlider.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" })
+  );
 
-      // Sidebar open/close
-      menuBtn.addEventListener('click', () => {
-        sidebar.classList.remove('-translate-x-full')
-        overlay.classList.remove('hidden')
-      })
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.add('-translate-x-full')
-        overlay.classList.add('hidden')
-      })
-      overlay.addEventListener('click', () => {
-        sidebar.classList.add('-translate-x-full')
-        overlay.classList.add('hidden')
-        mobileMenu.classList.add('hidden')
-      })
+  // ---------------- FEATURED PACKAGE LIGHTBOX ----------------
+  featuredPkg?.addEventListener("click", () => {
+    featuredLightbox.classList.remove("hidden");
+    featuredLightbox.classList.add("flex");
+  });
+  featuredClose?.addEventListener("click", () => {
+    featuredLightbox.classList.add("hidden");
+  });
+  featuredLightbox?.addEventListener("click", (e) => {
+    if (e.target === featuredLightbox) featuredLightbox.classList.add("hidden");
+  });
+  closeLightbox?.addEventListener("click", () => {
+    lightboxModal.style.display = "none";
+  });
+  lightboxModal?.addEventListener("click", (e) => {
+    if (e.target === lightboxModal) lightboxModal.style.display = "none";
+  });
 
-      // mobile menu toggle
-      menuBtn.addEventListener('dblclick', () => {
-        // double click: open mobile menu (fallback)
-        mobileMenu.classList.toggle('hidden')
-      })
-
-      // rotate hero word
-      setInterval(() => {
-        wIndex = (wIndex + 1) % words.length
-        if (dynamicWord) dynamicWord.textContent = words[wIndex]
-      }, 4000)
-
-      // gallery left/right
-      const SCROLL_AMOUNT = 320
-      prevGallery?.addEventListener('click', () =>
-        gallerySlider.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' })
-      )
-      nextGallery?.addEventListener('click', () =>
-        gallerySlider.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' })
-      )
-
-      // featured package -> open lightbox
-      featuredPkg?.addEventListener('click', () => {
-        featuredLightbox.classList.remove('hidden')
-        featuredLightbox.classList.add('flex')
-      })
-      featuredClose?.addEventListener('click', () => {
-        featuredLightbox.classList.remove('flex')
-        featuredLightbox.classList.add('hidden')
-      })
-      featuredLightbox?.addEventListener('click', (e) => {
-        if (e.target === featuredLightbox) {
-          featuredLightbox.classList.remove('flex')
-          featuredLightbox.classList.add('hidden')
-        }
-      })
-
-      // small lightbox close
-      closeLightbox?.addEventListener('click', () => {
-        lightboxModal.style.display = 'none'
-      })
-      lightboxModal?.addEventListener('click', (e) => {
-        if (e.target === lightboxModal) lightboxModal.style.display = 'none'
-      })
-
-      // Build seat plan cards
-      function buildSeatPlanCards() {
-        seatPlanContainer.innerHTML = ''
-        seatPlans.forEach((plan) => {
-          const wrapper = document.createElement('div')
-          wrapper.className =
-            'bg-white shadow-xl rounded-2xl overflow-hidden max-w-4xl mx-auto flex flex-col md:flex-row'
-          wrapper.innerHTML = `
-          <figure class="flex-shrink-0 w-full md:w-80">
-            <a href="${plan.book_now_link}" target="_blank">
-              <img class="w-full h-48 sm:h-52 md:h-52 object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none" src="${
-                plan.image_url
-              }" alt="${plan.class}" />
+  // ---------------- SEAT PLAN BUILDER ----------------
+  function buildSeatPlanCards() {
+    if (!seatPlanContainer) return;
+    seatPlanContainer.innerHTML = "";
+    seatPlans.forEach((plan) => {
+      const wrapper = document.createElement("div");
+      wrapper.className =
+        "bg-white shadow-xl rounded-2xl overflow-hidden max-w-4xl mx-auto flex flex-col md:flex-row";
+      wrapper.innerHTML = `
+        <figure class="flex-shrink-0 w-full md:w-80">
+          <a href="${plan.book_now_link}" target="_blank">
+            <img class="w-full h-48 sm:h-52 md:h-52 object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none" src="${plan.image_url}" alt="${plan.class}" />
+          </a>
+        </figure>
+        <div class="card-body text-white bg-gradient-to-r from-[#0E0F2C] to-[--brand] justify-between flex-1 p-4 sm:p-6 md:p-6 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <a href="${plan.book_now_link}" target="_blank" class="flex-1">
+              <div>
+                <h2 class="card-title text-lg font-bold">${plan.class}</h2>
+                <p class="text-sm text-gray-200">${plan.quantity}</p>
+                ${
+                  plan.details
+                    ? `<p style="font-size: .875rem; color: #e5e7eb; margin-top:.25rem;">${plan.details}</p>`
+                    : ""
+                }
+              </div>
             </a>
-          </figure>
-          <div class="card-body text-white bg-gradient-to-r from-[#0E0F2C] to-[--brand] justify-between flex-1 p-4 sm:p-6 md:p-6 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <a href="${plan.book_now_link}" target="_blank" class="flex-1">
-                <div>
-                  <h2 class="card-title text-lg font-bold">${plan.class}</h2>
-                  <p class="text-sm text-gray-200">${plan.quantity}</p>
-                  ${
-                    plan.details
-                      ? `<p style="font-size: .875rem; color: #e5e7eb; margin-top:.25rem;">${plan.details}</p>`
-                      : ''
-                  }
-                </div>
-              </a>
-              <a href="${plan.book_now_link}" class="block w-full md:w-auto">
-                <div class="text-left sm:text-left md:text-right">
-                  <div class="flex flex-col sm:flex-row md:justify-end justify-start md:items-end items-start gap-6">
-                    <div class="text-left md:text-right">
-                      <h2 class="text-2xl font-bold text-white">${
-                        plan.one_way_price
-                      }</h2>
-                      <p class="text-lg text-white">One Way</p>
-                    </div>
-                    <div class="text-left md:text-right">
-                      <h2 class="text-2xl font-bold text-white">${
-                        plan.round_trip_price
-                      }</h2>
-                      <p class="text-lg text-white">Round Trip</p>
-                    </div>
+            <a href="${plan.book_now_link}" class="block w-full md:w-auto">
+              <div class="text-left sm:text-left md:text-right">
+                <div class="flex flex-col sm:flex-row md:justify-end justify-start md:items-end items-start gap-6">
+                  <div class="text-left md:text-right">
+                    <h2 class="text-2xl font-bold text-white">${plan.one_way_price}</h2>
+                    <p class="text-lg text-white">One Way</p>
+                  </div>
+                  <div class="text-left md:text-right">
+                    <h2 class="text-2xl font-bold text-white">${plan.round_trip_price}</h2>
+                    <p class="text-lg text-white">Round Trip</p>
                   </div>
                 </div>
-              </a>
-            </div>
-            <div class="mt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
-              <a href="${
-                plan.book_now_link
-              }" target="_blank"><button class="btn btn-warning px-6 rounded-3xl font-semibold w-full sm:w-auto">Book Now</button></a>
-              <a href="${
-                plan.messenger_link
-              }" target="_blank"><button class="btn btn-outline btn-warning rounded-3xl px-6 font-semibold w-full sm:w-auto">Messenger</button></a>
-            </div>
+              </div>
+            </a>
           </div>
-        `
-          seatPlanContainer.appendChild(wrapper)
-        })
-      }
+          <div class="mt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+            <a href="${plan.book_now_link}" target="_blank">
+              <button class="btn btn-warning px-6 rounded-3xl font-semibold w-full sm:w-auto">Book Now</button>
+            </a>
+            <a href="${plan.messenger_link}" target="_blank">
+              <button class="btn btn-outline btn-warning rounded-3xl px-6 font-semibold w-full sm:w-auto">Messenger</button>
+            </a>
+          </div>
+        </div>
+      `;
+      seatPlanContainer.appendChild(wrapper);
+    });
+  }
 
-      // Language toggler: updates labels and language-specific card
-      function showLanguage(lang) {
-        const t = translations[lang] || translations.en
+  // ---------------- LANGUAGE TOGGLER ----------------
+  function showLanguage(lang) {
+    const t = translations[lang] || translations.en;
 
-        // headings
-        if (hotdealsTitle) hotdealsTitle.textContent = t.hotDeals
-        if (bookingTitle) bookingTitle.textContent = t.bookingProcess
+    hotdealsTitle && (hotdealsTitle.textContent = t.hotDeals);
+    bookingTitle && (bookingTitle.textContent = t.bookingProcess);
+    labelName && (labelName.textContent = t.labelName);
+    labelDestination && (labelDestination.textContent = t.labelDestination);
+    labelDate && (labelDate.textContent = t.labelDate);
+    labelPackage && (labelPackage.textContent = t.labelPackage);
+    confirmBtn && (confirmBtn.textContent = t.confirmBtn);
+    successAlert && (successAlert.textContent = t.successAlert);
 
-        // form labels
-        if (labelName) labelName.textContent = t.labelName
-        if (labelDestination) labelDestination.textContent = t.labelDestination
-        if (labelDate) labelDate.textContent = t.labelDate
-        if (labelPackage) labelPackage.textContent = t.labelPackage
+    if (lang === "en") {
+      contentEn.classList.remove("hidden");
+      contentBn.classList.add("hidden");
+      btnEn.classList.add("bg-[--brand]", "text-white");
+      btnBn.classList.remove("bg-[--brand]", "text-white");
+    } else {
+      contentEn.classList.add("hidden");
+      contentBn.classList.remove("hidden");
+      btnBn.classList.add("bg-[--brand]", "text-white");
+      btnEn.classList.remove("bg-[--brand]", "text-white");
+    }
+  }
 
-        // confirm button text
-        if (confirmBtn) confirmBtn.textContent = t.confirmBtn
+  btnEn?.addEventListener("click", () => showLanguage("en"));
+  btnBn?.addEventListener("click", () => showLanguage("bn"));
 
-        // success alert
-        if (successAlert) successAlert.textContent = t.successAlert
+  // ---------------- FORM SUBMIT (WHATSAPP) ----------------
+  travelForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const destination = document.getElementById("destination").value.trim();
+    const date = document.getElementById("date").value;
+    const packageType = document.getElementById("package").value.trim();
 
-        // language card toggle
-        if (lang === 'en') {
-          contentEn.classList.remove('hidden')
-          contentBn.classList.add('hidden')
-          btnEn.classList.add('bg-[--brand]', 'text-white')
-          btnEn.classList.remove('bg-white', 'text-gray-700')
-          btnBn.classList.remove('bg-[--brand]', 'text-white')
-          btnBn.classList.add('bg-white', 'text-gray-700')
-        } else {
-          contentEn.classList.add('hidden')
-          contentBn.classList.remove('hidden')
-          btnBn.classList.add('bg-[--brand]', 'text-white')
-          btnBn.classList.remove('bg-white', 'text-gray-700')
-          btnEn.classList.remove('bg-[--brand]', 'text-white')
-          btnEn.classList.add('bg-white', 'text-gray-700')
-        }
-      }
+    const activeLang = !btnEn?.classList.contains("bg-white") ? "en" : "bn";
+    const t = translations[activeLang];
 
-      // Attach language handlers (buttons already have onclick in HTML too)
-      if (btnEn) btnEn.addEventListener('click', () => showLanguage('en'))
-      if (btnBn) btnBn.addEventListener('click', () => showLanguage('bn'))
+    if (!name || !destination || !date || !packageType) {
+      alert(t.missingFields);
+      return;
+    }
 
-      // Confirm form -> WhatsApp
-      travelForm.addEventListener('submit', (e) => {
-        e.preventDefault()
-        const name = document.getElementById('name').value.trim()
-        const destination = document.getElementById('destination').value.trim()
-        const date = document.getElementById('date').value
-        const packageType = document.getElementById('package').value.trim()
+    const message =
+      activeLang === "en"
+        ? `🌍 Travel Confirmation Request\n\n👤 Name: ${name}\n📍 Destination: ${destination}\n📅 Date: ${date}\n🛳 Package: ${packageType}\n\nPlease confirm my booking.`
+        : `🌍 ট্রাভেল কনফার্মেশন রিকোয়েস্ট\n\n👤 নাম: ${name}\n📍 গন্তব্য: ${destination}\n📅 তারিখ: ${date}\n🛳 প্যাকেজ: ${packageType}\n\nঅনুগ্রহ করে আমার বুকিং নিশ্চিত করুন।`;
 
-        // choose language for error messages (based on btnEn active state)
-        const activeLang = !btnEn.classList.contains('bg-white') ? 'en' : 'bn'
-        const t = translations[activeLang]
+    successAlert?.classList.remove("hidden");
+    successAlert.textContent = t.successAlert;
 
-        if (!name || !destination || !date || !packageType) {
-          alert(t.missingFields)
-          return
-        }
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      message
+    )}`;
 
-        // Build message in the selected language
-        let message = ''
-        if (activeLang === 'en') {
-          message = `🌍 Travel Confirmation Request\n\n👤 Name: ${name}\n📍 Destination: ${destination}\n📅 Date: ${date}\n🛳 Package: ${packageType}\n\nPlease confirm my booking.`
-        } else {
-          message = `🌍 ট্রাভেল কনফার্মেশন রিকোয়েস্ট\n\n👤 নাম: ${name}\n📍 গন্তব্য: ${destination}\n📅 তারিখ: ${date}\n🛳 প্যাকেজ: ${packageType}\n\nঅনুগ্রহ করে আমার বুকিং নিশ্চিত করুন।`
-        }
+    setTimeout(() => {
+      window.open(waUrl, "_blank");
+      successAlert?.classList.add("hidden");
+      travelForm.reset();
+    }, 700);
+  });
 
-        // show alert then open WhatsApp
-        if (successAlert) {
-          successAlert.textContent = t.successAlert
-          successAlert.classList.remove('hidden')
-        }
-        const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-          message
-        )}`
+  // ---------------- PACKAGE BUTTON ----------------
+  bookPackageBtn?.addEventListener("click", () => {
+    document.getElementById("name")?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+    setTimeout(() => document.getElementById("name")?.focus(), 600);
+  });
 
-        // open immediately (short timeout to let user see alert)
-        setTimeout(() => {
-          window.open(waUrl, '_blank')
-          if (successAlert) successAlert.classList.add('hidden')
-          travelForm.reset()
-        }, 700)
-      })
+  // ---------------- INIT ----------------
+  buildSeatPlanCards();
+  showLanguage(defaultLang);
 
-      // Book package button also opens the booking form prefilled (or opens WhatsApp directly)
-      bookPackageBtn?.addEventListener('click', () => {
-        // jump to form area
-        document
-          .getElementById('name')
-          .scrollIntoView({ behavior: 'smooth', block: 'center' })
-        // optional: you could prefill fields or open a modal; here we focus the name field
-        setTimeout(() => document.getElementById('name').focus(), 600)
-      })
+  // ignore small runtime errors
+  window.addEventListener("error", () => {});
+</script>
 
-      // build seat plan initial
-      buildSeatPlanCards()
 
-      // initialize language default
-      showLanguage(defaultLang)
-
-      // small defenders for missing elements to avoid errors
-      window.addEventListener('error', () => {
-        /* ignore non-critical runtime errors in this environment */
-      })
-    </script>
   </body>
 </html>
